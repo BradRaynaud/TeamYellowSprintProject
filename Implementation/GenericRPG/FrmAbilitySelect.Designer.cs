@@ -45,7 +45,8 @@ namespace GenericRPG
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel3.Controls.Add(this.label20);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.comboBox3);
@@ -54,10 +55,10 @@ namespace GenericRPG
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.label17);
-            this.panel3.Location = new System.Drawing.Point(1, 11);
+            this.panel3.Location = new System.Drawing.Point(-3, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(275, 287);
+            this.panel3.Size = new System.Drawing.Size(279, 298);
             this.panel3.TabIndex = 19;
             // 
             // label20
@@ -87,7 +88,7 @@ namespace GenericRPG
             this.comboBox3.Items.AddRange(new object[] {
             "Meteor",
             "Blood Magic"});
-            this.comboBox3.Location = new System.Drawing.Point(20, 149);
+            this.comboBox3.Location = new System.Drawing.Point(20, 159);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(92, 21);
@@ -125,30 +126,36 @@ namespace GenericRPG
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label19.Location = new System.Drawing.Point(18, 133);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.Size = new System.Drawing.Size(74, 24);
             this.label19.TabIndex = 5;
             this.label19.Text = "Ability 3";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label18.Location = new System.Drawing.Point(18, 75);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.Size = new System.Drawing.Size(74, 24);
             this.label18.TabIndex = 4;
             this.label18.Text = "Ability 2";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label17.Location = new System.Drawing.Point(18, 22);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(40, 13);
+            this.label17.Size = new System.Drawing.Size(69, 24);
             this.label17.TabIndex = 3;
             this.label17.Text = "Ability1";
             // 
@@ -165,6 +172,7 @@ namespace GenericRPG
             // FrmAbilitySelect
             // 
             this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = global::GenericRPG.Properties.Resources.abilityselectbackround;
             this.ClientSize = new System.Drawing.Size(690, 507);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel3);
