@@ -150,6 +150,9 @@ namespace GameLibrary {
                     case "outportal":
                         t = new OutportalTile(words[2][0], words[3], words[4]);
                         break;
+                    case "switch":
+                        t = new SwitchTile(words[2][0], words[3][0], words[4][0]);
+                        break;
                     default:
                         t = new WallTile("blank");
                         break;
@@ -268,6 +271,7 @@ namespace GameLibrary {
         /// </summary>
         private abstract class Tile {
             public string ImageFile { get; private set;  }
+            public bool SwitchCondition { get; private set; } = false;
             
             public Tile(string imageFile) {
                 ImageFile = imageFile;
@@ -294,7 +298,7 @@ namespace GameLibrary {
 
         private class PathTile : Tile {
             public PathTile(string imageFile) : base(imageFile) { }
-
+            
             public override Position? Enter(Position pos) {
                 // let the character step into the tile
                 return pos;
@@ -309,8 +313,7 @@ namespace GameLibrary {
             }
         }
 
-        private class InportalTile : Tile
-        {
+        private class InportalTile : Tile {
             private char destination;
 
             public InportalTile(char destination, string imageFile) : base(imageFile) {
@@ -324,8 +327,7 @@ namespace GameLibrary {
             }
         }
 
-        private class OutportalTile : Tile
-        {
+        private class OutportalTile : Tile {
             private char destination;
             private string level;
 
@@ -338,6 +340,28 @@ namespace GameLibrary {
                 // switch to the right level then send the character to the position of the destination of the portal
                 ChangeMap(level);
                 return CurrentMap.PositionOfCharacter(destination);
+            }
+        }
+
+        private class SwitchTile : Tile {
+            private char conditionTile;
+            private char falseTile;
+            private char trueTile;
+
+
+            public SwitchTile(char conditionTile, char falseTile, char trueTile) : base("blank") {
+                this.conditionTile = conditionTile;
+                this.falseTile = falseTile;
+                this.trueTile = trueTile;
+            }
+
+            public override Position? Enter(Position pos) {
+                if (CurrentMap.tileDict[conditionTile].SwitchCondition) {
+                    return CurrentMap.tileDict[trueTile].Enter(pos);
+                }
+                else {
+                    return CurrentMap.tileDict[falseTile].Enter(pos);
+                }
             }
         }
     }

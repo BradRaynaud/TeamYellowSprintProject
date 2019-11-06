@@ -175,6 +175,8 @@
     <Content Include="Resources\level-5b\Tiles.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\level-6\Map.txt" />
+    <Content Include="Resources\level-6\Tiles.txt" />
     <Content Include="Resources\levelup.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -3,7 +3,7 @@
 2 start pokemongrass
 3 outportal 4 level-4a pokemonhole
 4 outportal 4 level-4b pokemonhole
-5 path pokemonhole
+5 outportal 3 level-6 pokemonhole
 f path pokemonflowers
 w wall pokemonwall
 r wall pokemonroof

@@ -1,0 +1,7 @@
+﻿0 path animalcrossinggrass
+1 wall animalcrossingrock
+2 start animalcrossinggrass
+3 outportal 5 level-5a animalcrossinghole
+5 enemy resetti animalcrossinggrass
+6 path animalcrossinghole
+4 switch 5 5 6
