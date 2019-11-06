@@ -33,7 +33,7 @@ namespace GenericRPG {
         UpdateStats();
 
         // pictures
-        picCharacter.BackgroundImage = character.Pic.BackgroundImage;
+        picCharacter.BackgroundImage = character.Pic.Image;
         picEnemy.BackgroundImage = enemy.Img;
 
         // names
