@@ -16,3 +16,8 @@ C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Deb
 C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.dll
 C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.pdb
 >>>>>>> 697cf9020af598c0ed5ebf0ebd12385811048601
+C:\Users\samue\Documents\CSC 403\scrum project 2\TeamYellowSprintProject\Implementation\GameLibrary\bin\Debug\GameLibrary.dll
+C:\Users\samue\Documents\CSC 403\scrum project 2\TeamYellowSprintProject\Implementation\GameLibrary\bin\Debug\GameLibrary.pdb
+C:\Users\samue\Documents\CSC 403\scrum project 2\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.csprojAssemblyReference.cache
+C:\Users\samue\Documents\CSC 403\scrum project 2\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.dll
+C:\Users\samue\Documents\CSC 403\scrum project 2\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.pdb
