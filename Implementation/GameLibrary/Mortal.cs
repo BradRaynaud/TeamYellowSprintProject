@@ -348,5 +348,16 @@ namespace GameLibrary {
         }
 
 
+    private void regenerateHealth() {
+        float regenHealth = character.MaxHealth * 0.1F;
+        Health += regenHealth;
+    }
+
+    private void regenerateMana() {
+        float regenMana = character.MaxMana * 0.1F;
+        Mana += regenMana;
+
+    }
+
     }
 }

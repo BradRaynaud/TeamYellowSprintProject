@@ -90,6 +90,8 @@ namespace GenericRPG {
                 character.GainXP(enemy.XpDropped,enemy.Level,character.Level);
                 lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
                 lblEndFightMessage.Visible = true;
+                character.regenerateHealth();
+                character.regenerateMana();
                 Refresh();
                 Thread.Sleep(1200);
                 EndFight();
@@ -287,6 +289,8 @@ namespace GenericRPG {
             lblEnemyDamage.Top = 52;
         }
     }
-    
+
+
+
     }
 }
