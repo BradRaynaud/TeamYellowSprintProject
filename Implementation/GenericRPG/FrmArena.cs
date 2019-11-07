@@ -34,8 +34,8 @@ namespace GenericRPG {
         // stats
         UpdateStats();
 
-        // pictures
-        picCharacter.BackgroundImage = character.Pic.BackgroundImage;
+            // pictures
+        picCharacter.BackgroundImage = Resources.character;
         picEnemy.BackgroundImage = enemy.Img;
 
         // names
@@ -43,48 +43,42 @@ namespace GenericRPG {
         lblEnemyName.Text = enemy.Name;
     }
     
-        /// <summary>
-        /// This function updates the stats on the FrmArena menu
-        /// </summary>
+    /// <summary>
+    /// This function updates the stats on the FrmArena menu
+    /// </summary>
 
-        public void UpdateStats() {
-        // Update the Player Level and Health
-        lblPlayerLevel.Text = character.Level.ToString();
-        lblPlayerHealth.Text = Math.Round(character.Health).ToString();
+    public void UpdateStats() {
+    // Update the Player Level and Health
+    lblPlayerLevel.Text = character.Level.ToString();
+    lblPlayerHealth.Text = Math.Round(character.Health).ToString();
         
-        // Update the Player Stats
-        lblPlayerStr.Text = Math.Round(character.Strength).ToString();
-        lblPlayerDex.Text = Math.Round(character.Dexterity).ToString();
-        lblPlayerCon.Text = Math.Round(character.Constitution).ToString();
-        lblPlayerInt.Text = Math.Round(character.Intelligence).ToString();
-        lblPlayerWis.Text = Math.Round(character.Wisdom).ToString();
-        lblPlayerChar.Text = Math.Round(character.Charisma).ToString();
-        lblPlayerLuck.Text = Math.Round(character.Luck).ToString();
+    // Update the Player Stats
+    lblPlayerStr.Text = Math.Round(character.Strength).ToString();
+    lblPlayerDex.Text = Math.Round(character.Dexterity).ToString();
+    lblPlayerCon.Text = Math.Round(character.Constitution).ToString();
+    lblPlayerInt.Text = Math.Round(character.Intelligence).ToString();
+    lblPlayerWis.Text = Math.Round(character.Wisdom).ToString();
+    lblPlayerChar.Text = Math.Round(character.Charisma).ToString();
+    lblPlayerLuck.Text = Math.Round(character.Luck).ToString();
 
-        // Update Player Mana and XP
-        lblPlayerMana.Text = Math.Round(character.Mana).ToString();
-        lblPlayerXp.Text = Math.Round(character.XP).ToString();
+    // Update Player Mana and XP
+    lblPlayerMana.Text = Math.Round(character.Mana).ToString();
+    lblPlayerXp.Text = Math.Round(character.XP).ToString();
         
-        // Update Enemy level, health, and stats
-        lblEnemyLevel.Text = enemy.Level.ToString();
-        lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
-        lblEnemyStr.Text = Math.Round(enemy.Str).ToString();
-        lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
-        lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
+    // Update Enemy level, health, and stats
+    lblEnemyLevel.Text = enemy.Level.ToString();
+    lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
+    lblEnemyStr.Text = Math.Round(enemy.Str).ToString();
+    lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
+    lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
 
-        // Duplicated code that reupdates the player and enemy health
-        // This should do nothing but I didnt remove it just in case
-        //lblPlayerHealth.Text = Math.Round(character.Health).ToString();
-        //lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
+    // Duplicated code that reupdates the player and enemy health
+    // This should do nothing but I didnt remove it just in case
+    //lblPlayerHealth.Text = Math.Round(character.Health).ToString();
+    //lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
     }
-    public  void closed(object sender, FormClosedEventArgs e)
+        public void updateAbilities()
         {
-            Character character = Game.GetGame().Character;
-            if (character.Abilities[0] == "Slash")
-            {
-                this.btnSimpleAttack.Text = "Slash";
-                Console.WriteLine("oopsiess");
-            }
         }
    
     //function to encapsulate the process of combat
@@ -205,7 +199,27 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
-    private void btnMeteor_Click(object sender, EventArgs e)
+        private void btnBigStab_Click(object sender, EventArgs e)
+        {
+            float prevEnemyHealth = enemy.Health;
+            character.BigStab(enemy);
+            float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+            lblEnemyDamage.Text = enemyDamage.ToString();
+            lblEnemyDamage.Visible = true;
+            tmrEnemyDamage.Enabled = true;
+            combatStuff();
+        }
+        private void btnIceBlast_Click(object sender, EventArgs e)
+        {
+            float prevEnemyHealth = enemy.Health;
+            character.IceBlast(enemy);
+            float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+            lblEnemyDamage.Text = enemyDamage.ToString();
+            lblEnemyDamage.Visible = true;
+            tmrEnemyDamage.Enabled = true;
+            combatStuff();
+        }
+        private void btnMeteor_Click(object sender, EventArgs e)
     {
         float prevEnemyHealth = enemy.Health;
         character.Meteor(enemy);
@@ -225,13 +239,24 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
+    private void btnMercy_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Mercy(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
 
-            /// <summary>
-            /// This function executies on Run button click
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-            private void btnRun_Click(object sender, EventArgs e) {
+
+        /// <summary>
+        /// This function executies on Run button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRun_Click(object sender, EventArgs e) {
         if (rand.NextDouble() < 0.25) {
         lblEndFightMessage.Text = "You Ran Like a Coward!";
         lblEndFightMessage.Visible = true;

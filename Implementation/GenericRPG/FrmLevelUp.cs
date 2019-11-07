@@ -125,5 +125,11 @@ namespace GenericRPG {
             ptstoAlloc.Text = character.statPoints.ToString();
             lblNewLuck.Text = ((float)Math.Round(character.Luck)).ToString();
         }
+        private void AbilitySelect_Click(object sender, EventArgs e)
+        {
+            FrmAbilitySelect ability = new FrmAbilitySelect();
+            ability.checkLevel();
+            ability.Show();
+        }
     }
 }

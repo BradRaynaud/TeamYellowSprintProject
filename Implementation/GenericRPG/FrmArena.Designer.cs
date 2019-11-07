@@ -632,6 +632,7 @@ namespace GenericRPG {
             this.btnSimpleAttack.Text = character.Abilities[0];
             this.btnSimpleAttack.UseVisualStyleBackColor = false;
             this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
+            
             if (character.Abilities[0] == "Simple Attack")
             {
                 this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
@@ -642,9 +643,13 @@ namespace GenericRPG {
             }
             if (character.Abilities[0] == "Stab")
             {
-                this.btnWeakenAttack.Click += new System.EventHandler(this.btnStab_Click);
+                this.btnSimpleAttack.Click += new System.EventHandler(this.btnStab_Click);
             }
-           
+            if (character.Abilities[0] == "Big Stab")
+            {
+                this.btnSimpleAttack.Click += new System.EventHandler(this.btnBigStab_Click);
+            }
+
             // 
             // btnWeakenAttack
             // 
@@ -667,6 +672,10 @@ namespace GenericRPG {
             if (character.Abilities[1] == "Fireball")
             {
                 this.btnWeakenAttack.Click += new System.EventHandler(this.btnFireball_Click);
+            }
+            if (character.Abilities[1] == "Ice Blast")
+            {
+                this.btnWeakenAttack.Click += new System.EventHandler(this.btnIceBlast_Click);
             }
 
             // 
@@ -691,6 +700,10 @@ namespace GenericRPG {
             if (character.Abilities[2] == "Blood Magic")
             {
                 this.Attack2.Click += new System.EventHandler(this.btnBloodMagic_Click);
+            }
+            if (character.Abilities[2] == "Execution")
+            {
+                this.Attack2.Click += new System.EventHandler(this.btnMercy_Click);
             }
             // 
             // btnRun
