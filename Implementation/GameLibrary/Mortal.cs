@@ -311,7 +311,9 @@ namespace GameLibrary {
                 statPoints -= 1;
             }
         }
-
+        /// <summary>
+        /// Increment Charisma Value
+        /// </summary>
         public void incCharisma()
         {
             if (statPoints > 0)
