@@ -63,6 +63,16 @@ namespace GenericRPG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap abilityselectbackround {
+            get {
+                object obj = ResourceManager.GetObject("abilityselectbackround", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap animalcrossinggrass {
             get {
                 object obj = ResourceManager.GetObject("animalcrossinggrass", resourceCulture);
@@ -116,6 +126,16 @@ namespace GenericRPG.Properties {
         internal static System.Drawing.Bitmap character_levelup_animation {
             get {
                 object obj = ResourceManager.GetObject("character_levelup_animation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap character1 {
+            get {
+                object obj = ResourceManager.GetObject("character1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +206,16 @@ namespace GenericRPG.Properties {
         internal static System.Drawing.Bitmap mariowall {
             get {
                 object obj = ResourceManager.GetObject("mariowall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuPicture {
+            get {
+                object obj = ResourceManager.GetObject("MenuPicture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

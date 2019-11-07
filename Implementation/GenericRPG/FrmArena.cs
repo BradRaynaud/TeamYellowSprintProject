@@ -5,15 +5,17 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
+
 namespace GenericRPG {
+    
     public partial class FrmArena : Form {
     private Game game;
     private Character character;
     private Enemy enemy;
     private Random rand;
-    
+    //public string[] Ability;
     public FrmArena() {
-        InitializeComponent();
+    InitializeComponent();
     }
     private void btnEndFight_Click(object sender, EventArgs e) {
         EndFight();
@@ -32,56 +34,64 @@ namespace GenericRPG {
         // stats
         UpdateStats();
 
-        // pictures
-        picCharacter.BackgroundImage = character.Pic.Image;
+            // pictures
+        picCharacter.BackgroundImage = Resources.character;
         picEnemy.BackgroundImage = enemy.Img;
 
         // names
         lblPlayerName.Text = character.Name;
         lblEnemyName.Text = enemy.Name;
     }
+    
     /// <summary>
     /// This function updates the stats on the FrmArena menu
     /// </summary>
+
     public void UpdateStats() {
-        // Update the Player Level and Health
-        lblPlayerLevel.Text = character.Level.ToString();
-        lblPlayerHealth.Text = Math.Round(character.Health).ToString();
+    // Update the Player Level and Health
+    lblPlayerLevel.Text = character.Level.ToString();
+    lblPlayerHealth.Text = Math.Round(character.Health).ToString();
         
-        // Update the Player Stats
-        lblPlayerStr.Text = Math.Round(character.Strength).ToString();
-        lblPlayerDex.Text = Math.Round(character.Dexterity).ToString();
-        lblPlayerCon.Text = Math.Round(character.Constitution).ToString();
-        lblPlayerInt.Text = Math.Round(character.Intelligence).ToString();
-        lblPlayerWis.Text = Math.Round(character.Wisdom).ToString();
-        lblPlayerChar.Text = Math.Round(character.Charisma).ToString();
-        lblPlayerLuck.Text = Math.Round(character.Luck).ToString();
+    // Update the Player Stats
+    lblPlayerStr.Text = Math.Round(character.Strength).ToString();
+    lblPlayerDex.Text = Math.Round(character.Dexterity).ToString();
+    lblPlayerCon.Text = Math.Round(character.Constitution).ToString();
+    lblPlayerInt.Text = Math.Round(character.Intelligence).ToString();
+    lblPlayerWis.Text = Math.Round(character.Wisdom).ToString();
+    lblPlayerChar.Text = Math.Round(character.Charisma).ToString();
+    lblPlayerLuck.Text = Math.Round(character.Luck).ToString();
 
-        // Update Player Mana and XP
-        lblPlayerMana.Text = Math.Round(character.Mana).ToString();
-        lblPlayerXp.Text = Math.Round(character.XP).ToString();
+    // Update Player Mana and XP
+    lblPlayerMana.Text = Math.Round(character.Mana).ToString();
+    lblPlayerXp.Text = Math.Round(character.XP).ToString();
         
-        // Update Enemy level, health, and stats
-        lblEnemyLevel.Text = enemy.Level.ToString();
-        lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
-        lblEnemyStr.Text = Math.Round(enemy.Str).ToString();
-        lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
-        lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
+    // Update Enemy level, health, and stats
+    lblEnemyLevel.Text = enemy.Level.ToString();
+    lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
+    lblEnemyStr.Text = Math.Round(enemy.Str).ToString();
+    lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
+    lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
 
-        // Duplicated code that reupdates the player and enemy health
-        // This should do nothing but I didnt remove it just in case
-        //lblPlayerHealth.Text = Math.Round(character.Health).ToString();
-        //lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
+    // Duplicated code that reupdates the player and enemy health
+    // This should do nothing but I didnt remove it just in case
+    //lblPlayerHealth.Text = Math.Round(character.Health).ToString();
+    //lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
     }
+        public void updateAbilities()
+        {
+        }
+   
     //function to encapsulate the process of combat
     //called after an ability is used/processed
-    private void combatStuff()
+        private void combatStuff()
     {
             if (enemy.Health <= 0)
             {
-                int XPreward = character.GainXP(enemy.XpDropped, enemy.Level, character.Level);
-                lblEndFightMessage.Text = "You Gained " + XPreward + " xp!";
+                character.GainXP(enemy.XpDropped,enemy.Level,character.Level);
+                lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
                 lblEndFightMessage.Visible = true;
+                character.regenerateHealth();
+                character.regenerateMana();
                 Refresh();
                 Thread.Sleep(1200);
                 EndFight();
@@ -89,6 +99,7 @@ namespace GenericRPG {
                 {
                     FrmLevelUp frmLevelUp = new FrmLevelUp();
                     frmLevelUp.Show();
+                   
                 }
             }
             else
@@ -154,6 +165,94 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
+    private void btnHeal_Click(object sender, EventArgs e)
+    {
+        character.Heal(character);
+        combatStuff();
+    }
+    private void btnFireball_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Fireball(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+    private void btnSlash_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Slash(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+
+    }
+    private void btnStab_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Stab(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+        private void btnBigStab_Click(object sender, EventArgs e)
+        {
+            float prevEnemyHealth = enemy.Health;
+            character.BigStab(enemy);
+            float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+            lblEnemyDamage.Text = enemyDamage.ToString();
+            lblEnemyDamage.Visible = true;
+            tmrEnemyDamage.Enabled = true;
+            combatStuff();
+        }
+        private void btnIceBlast_Click(object sender, EventArgs e)
+        {
+            float prevEnemyHealth = enemy.Health;
+            character.IceBlast(enemy);
+            float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+            lblEnemyDamage.Text = enemyDamage.ToString();
+            lblEnemyDamage.Visible = true;
+            tmrEnemyDamage.Enabled = true;
+            combatStuff();
+        }
+        private void btnMeteor_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Meteor(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+    private void btnBloodMagic_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.BloodMagic(character,enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+    private void btnMercy_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Mercy(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+
+
         /// <summary>
         /// This function executies on Run button click
         /// </summary>
@@ -168,7 +267,7 @@ namespace GenericRPG {
         EndFight();
         }
         else {
-        enemy.SimpleAttack(character);
+        combatStuff();
         UpdateStats();
         }
     }
@@ -190,6 +289,8 @@ namespace GenericRPG {
             lblEnemyDamage.Top = 52;
         }
     }
-    
+
+
+
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GenericRPG {
+﻿using System.Windows.Forms;
+using GameLibrary;
+namespace GenericRPG {
   partial class FrmArena {
     /// <summary>
     /// Required designer variable.
@@ -15,14 +17,14 @@
       }
       base.Dispose(disposing);
     }
+    
+        #region Windows Form Designer generated code
 
-    #region Windows Form Designer generated code
-
-    /// <summary>
-    /// Required method for Designer support - do not modify
-    /// the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent() {
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.lblPlayerHealth = new System.Windows.Forms.Label();
             this.picCharacter = new System.Windows.Forms.PictureBox();
@@ -76,6 +78,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             this.SuspendLayout();
+
+            Character character = Game.GetGame().Character;
+            #region Settings
             // 
             // lblPlayerHealth
             // 
@@ -453,9 +458,9 @@
             // 
             this.lblEnemyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyName.ForeColor = System.Drawing.Color.White;
-            this.lblEnemyName.Location = new System.Drawing.Point(24, 12);
+            this.lblEnemyName.Location = new System.Drawing.Point(-13, 12);
             this.lblEnemyName.Name = "lblEnemyName";
-            this.lblEnemyName.Size = new System.Drawing.Size(178, 24);
+            this.lblEnemyName.Size = new System.Drawing.Size(254, 24);
             this.lblEnemyName.TabIndex = 10;
             this.lblEnemyName.Text = "Enemy Name";
             this.lblEnemyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -560,42 +565,7 @@
             this.lblEnemyMana.Size = new System.Drawing.Size(57, 20);
             this.lblEnemyMana.TabIndex = 5;
             this.lblEnemyMana.Text = "label1";
-            // 
-            // btnSimpleAttack
-            // 
-            this.btnSimpleAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnSimpleAttack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSimpleAttack.Location = new System.Drawing.Point(306, 146);
-            this.btnSimpleAttack.Name = "btnSimpleAttack";
-            this.btnSimpleAttack.Size = new System.Drawing.Size(86, 46);
-            this.btnSimpleAttack.TabIndex = 13;
-            this.btnSimpleAttack.Text = "Simple Attack";
-            this.btnSimpleAttack.UseVisualStyleBackColor = false;
-            this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
-            // 
-            // btnWeakenAttack
-            // 
-            this.btnWeakenAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnWeakenAttack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWeakenAttack.Location = new System.Drawing.Point(306, 198);
-            this.btnWeakenAttack.Name = "btnWeakenAttack";
-            this.btnWeakenAttack.Size = new System.Drawing.Size(86, 46);
-            this.btnWeakenAttack.TabIndex = 14;
-            this.btnWeakenAttack.Text = "Weaken";
-            this.btnWeakenAttack.UseVisualStyleBackColor = false;
-            this.btnWeakenAttack.Click += new System.EventHandler(this.btnWeakenAttack_Click);
-            // 
-            // btnRun
-            // 
-            this.btnRun.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRun.Location = new System.Drawing.Point(306, 299);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(86, 46);
-            this.btnRun.TabIndex = 15;
-            this.btnRun.Text = "Run";
-            this.btnRun.UseVisualStyleBackColor = false;
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+
             // 
             // lblEndFightMessage
             // 
@@ -618,23 +588,13 @@
             // 
             this.tmrEnemyDamage.Interval = 20;
             this.tmrEnemyDamage.Tick += new System.EventHandler(this.tmrEnemyDamage_Tick);
-            // 
-            // Attack2
-            //
-            this.Attack2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
-            this.Attack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Attack2.Location = new System.Drawing.Point(306, 250);
-            this.Attack2.Name = "Attack2";
-            this.Attack2.Size = new System.Drawing.Size(86, 43);
-            this.Attack2.TabIndex = 17;
-            this.Attack2.Text = "Big Move";
-            this.Attack2.UseVisualStyleBackColor = false;
-            this.Attack2.Click += new System.EventHandler(this.btnAttack2_Click);
+
             // 
             // FrmArena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(706, 501);
             this.Controls.Add(this.Attack2);
@@ -656,8 +616,111 @@
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             this.ResumeLayout(false);
 
-    }
 
+
+            #endregion
+           
+            // 
+            // btnSimpleAttack
+            // 
+            this.btnSimpleAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnSimpleAttack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSimpleAttack.Location = new System.Drawing.Point(306, 146);
+            this.btnSimpleAttack.Name = "btnSimpleAttack";
+            this.btnSimpleAttack.Size = new System.Drawing.Size(86, 46);
+            this.btnSimpleAttack.TabIndex = 13;
+            this.btnSimpleAttack.Text = character.Abilities[0];
+            this.btnSimpleAttack.UseVisualStyleBackColor = false;
+            this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
+            
+            if (character.Abilities[0] == "Simple Attack")
+            {
+                this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
+            }
+            if (character.Abilities[0] == "Slash")
+            {
+                this.btnSimpleAttack.Click += new System.EventHandler(this.btnSlash_Click);
+            }
+            if (character.Abilities[0] == "Stab")
+            {
+                this.btnSimpleAttack.Click += new System.EventHandler(this.btnStab_Click);
+            }
+            if (character.Abilities[0] == "Big Stab")
+            {
+                this.btnSimpleAttack.Click += new System.EventHandler(this.btnBigStab_Click);
+            }
+
+            // 
+            // btnWeakenAttack
+            // 
+            this.btnWeakenAttack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnWeakenAttack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWeakenAttack.Location = new System.Drawing.Point(306, 198);
+            this.btnWeakenAttack.Name = "btnWeakenAttack";
+            this.btnWeakenAttack.Size = new System.Drawing.Size(86, 46);
+            this.btnWeakenAttack.TabIndex = 14;
+            this.btnWeakenAttack.Text = character.Abilities[1];
+            this.btnWeakenAttack.UseVisualStyleBackColor = false;
+            if (character.Abilities[1] == "Weaken")
+            {
+                this.btnWeakenAttack.Click += new System.EventHandler(this.btnWeakenAttack_Click);
+            }
+            if (character.Abilities[1] == "Heal")
+            {
+                this.btnWeakenAttack.Click += new System.EventHandler(this.btnHeal_Click);
+            }
+            if (character.Abilities[1] == "Fireball")
+            {
+                this.btnWeakenAttack.Click += new System.EventHandler(this.btnFireball_Click);
+            }
+            if (character.Abilities[1] == "Ice Blast")
+            {
+                this.btnWeakenAttack.Click += new System.EventHandler(this.btnIceBlast_Click);
+            }
+
+            // 
+            // Attack2
+            // 
+            this.Attack2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+            this.Attack2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Attack2.Location = new System.Drawing.Point(306, 250);
+            this.Attack2.Name = "Attack2";
+            this.Attack2.Size = new System.Drawing.Size(86, 43);
+            this.Attack2.TabIndex = 17;
+            this.Attack2.Text = character.Abilities[2];
+            this.Attack2.UseVisualStyleBackColor = false;
+            if (character.Abilities[2] == "BIG MOVE")
+            {
+                this.Attack2.Click += new System.EventHandler(this.btnAttack2_Click);
+            }
+            if (character.Abilities[2] == "Meteor")
+            {
+                this.Attack2.Click += new System.EventHandler(this.btnMeteor_Click);
+            }
+            if (character.Abilities[2] == "Blood Magic")
+            {
+                this.Attack2.Click += new System.EventHandler(this.btnBloodMagic_Click);
+            }
+            if (character.Abilities[2] == "Execution")
+            {
+                this.Attack2.Click += new System.EventHandler(this.btnMercy_Click);
+            }
+            // 
+            // btnRun
+            // 
+            this.btnRun.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRun.Location = new System.Drawing.Point(306, 299);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(86, 46);
+            this.btnRun.TabIndex = 15;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = false;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            
+
+    }
+    
     #endregion
     private System.Windows.Forms.Label lblPlayerHealth;
     private System.Windows.Forms.PictureBox picCharacter;
@@ -685,7 +748,7 @@
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.Label lblEnemyLevel;
     private System.Windows.Forms.Label label7;
-    private System.Windows.Forms.Button btnSimpleAttack;
+    public System.Windows.Forms.Button btnSimpleAttack;
     private System.Windows.Forms.Button btnWeakenAttack;
     private System.Windows.Forms.Button btnRun;
     private System.Windows.Forms.Label lblEndFightMessage;
@@ -706,5 +769,8 @@
     private System.Windows.Forms.Label lblPlayerLuck;
     private System.Windows.Forms.Label lblPlayerCon;
     private System.Windows.Forms.Button Attack2;
+  
+
     }
+    
 }

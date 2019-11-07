@@ -4,6 +4,7 @@ namespace GameLibrary {
     public class Mortal 
     {
         #region Constants
+  
         private const float INIT_HEALTH = 100;
         private const float INIT_STR = 10;
         private const float INIT_DEF = 5;
@@ -45,6 +46,8 @@ namespace GameLibrary {
         public float MaxMana { get; protected set; }
         public float Mana { get; protected set; }
 
+
+        public string[] Abilities = { "Simple Attack", "Weaken", "BIG MOVE" };
         // New Stats
         public float Strength { get; protected set; }
         public float Dexterity { get; protected set; }
@@ -53,7 +56,7 @@ namespace GameLibrary {
         public float Wisdom { get; protected set; }
         public float Charisma { get; protected set; }
         public float Luck { get; protected set; }
-
+        public int statPoints { get; protected set; }
 
         public float Str { get; protected set; }
         public float Def { get; protected set; }
@@ -68,6 +71,9 @@ namespace GameLibrary {
             SetLevel(level);
             rand = new Random();
         }
+        /// <summary>
+        /// Reset stats to base values on death
+        /// </summary>
         public virtual void ResetStats() {
             Level = 1;
             MaxHealth = INIT_HEALTH;
@@ -89,11 +95,18 @@ namespace GameLibrary {
             Luck = INIT_LUCK;
 
         }
+        /// <summary>
+        /// Sets the player's level
+        /// </summary>
+        /// <param name="level"></param>
         public void SetLevel(int level) {
             for (int i = 1; i < level; i++) {
             LevelUp();
             }
         }
+        /// <summary>
+        /// Function to handle level ups
+        /// </summary>
         public virtual void LevelUp() {
             // level increases
             Level++;
@@ -104,6 +117,11 @@ namespace GameLibrary {
             Health = MaxHealth;
             Mana = MaxMana;
 
+            statPoints += 7;
+
+            /*
+            // Dont need increment value assuming statpoint
+            // Alloc is still implemented
             // other stats
             Str += LVLINC_STR;
             Def += LVLINC_DEF;
@@ -117,49 +135,229 @@ namespace GameLibrary {
             Intelligence += LVLINC_INTELLIGENCE;
             Wisdom += LVLINC_WISDOM;
             Charisma += LVLINC_CHARISMA;
+            */
         }
+        // Refill Health and Mana
         public void RefillHealthAndMana() {
             Health = MaxHealth;
             Mana = MaxMana;
         }
-        public void SimpleAttack(Mortal receiver) 
+        public void SimpleAttack(Mortal receiver)
         {
-            if(Str <= 0)
+            if (Str <= 0)
             {
                 return;
             }
-            float baseDamage = Math.Abs(Str * 1.2f - receiver.Def);
+            float baseDamage = Math.Abs(Str * 1.8f - receiver.Def);
             float randMax = 1 + SIMPLEATTACK_RANDOM_AMT;
             float randMin = 1 - SIMPLEATTACK_RANDOM_AMT;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
             receiver.Health -= (baseDamage * randMult);
         }
-        public void Attack2(Mortal receiver)
+        public void Slash(Mortal receiver)
         {
-            if(Mana != 0)
-            {
-                float baseDamage = (float) Math.Abs(Mana * .75 + Level);
-                receiver.Health -= baseDamage;
-                Mana = 0;
-            }
-            return;
-           
-        }
-        /*
-        //function to check if characters stats are below 0 ie mana,strength,etc
-        public void statCheck(Mortal Character, Mortal receiver)
-        {
-            if(Character)
-        }
-        */
-        public void WeakenAttack(Mortal receiver)
-        {
-            if (receiver.Str <= 0 )
+            if (Str <= 0)
             {
                 return;
             }
-            receiver.Str -= 1;
-            Mana -= 10;
+            float baseDamage = Math.Abs(Str * 2.2f - receiver.Def);
+            float randMax = 1 + .5f;
+            float randMin = 1 - .5f;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
         }
+        public void Stab(Mortal receiver)
+        {
+            if (Str <= 0)
+            {
+                return;
+            }
+            float baseDamage = Math.Abs(Str * 2.4f - receiver.Def);
+            float randMax = 1 + .4f;
+            float randMin = 1 - .4f;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
+        }
+        public void BigStab(Mortal receiver)
+        {
+            if (Str <= 0)
+            {
+                return;
+            }
+            float baseDamage = Math.Abs(Str * 2.8f - receiver.Def);
+            float randMax = 1 + .5f;
+            float randMin = 1 - .4f;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
+        }
+        public void Mercy(Mortal receiver)
+        {
+            receiver.Health = 1;
+        }
+        public void Attack2(Mortal receiver)
+        {
+           
+            receiver.Health = 0;
+        }
+        
+        public void Fireball(Mortal receiver)
+        {
+            if(spellCost(30)==true)
+            {
+                float baseDamage = (float)Math.Abs(Intelligence * (2 + Level));
+                receiver.Health -= baseDamage;
+            }                     
+        }
+        public void Heal(Mortal character)
+        {
+            if(spellCost(10)==true)
+            {
+                character.Health += 15;
+            }
+        }
+        public void Meteor(Mortal receiver)
+        {
+            if (spellCost(40) == true)
+            {
+                receiver.Health -= 50;
+            }
+        }
+        public void BloodMagic(Mortal character, Mortal receiver)
+        {
+              if(character.Health-50 >=0)
+            {
+                character.Health -= 50;
+                receiver.Health -= 65;
+            }
+        }
+        public void IceBlast(Mortal receiver)
+        {
+            if (spellCost(35) == true)
+            {
+                float baseDamage = (float)Math.Abs(Intelligence * (3 + Level));
+                receiver.Health -= baseDamage;
+            }
+        }
+       
+        public bool spellCost(float x)
+        {
+            if(Mana-x>=0)
+            {
+                Mana -= x;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+     
+        public void WeakenAttack(Mortal receiver)
+        {
+            if (receiver.Str < 0 )
+            {
+                return;
+            }
+            if(spellCost(10) == true)
+            {
+                receiver.Str -= 1;
+            }
+            
+            
+        }
+        
+        /// <summary>
+        /// Increment Strength Value
+        /// </summary>
+        public void incStrength()
+        {
+            if(statPoints > 0)
+            {
+                Strength += 1;
+                statPoints -= 1;
+            }
+        }
+        /// <summary>
+        /// Increment Dex Value
+        /// </summary>
+        public void incDexterity()
+        {
+            if (statPoints > 0)
+            {
+                Dexterity += 1;
+                statPoints -= 1;
+            }
+        }
+        /// <summary>
+        /// Increment Intelligence value
+        /// </summary>
+        public void incIntelligence()
+        {
+            if (statPoints > 0)
+            {
+                Intelligence += 1;
+                statPoints -= 1;
+            }
+        }
+
+        /// <summary>
+        /// Increment Wisdom Value
+        /// </summary>
+        public void incWisdom()
+        {
+            if (statPoints > 0)
+            {
+                Wisdom += 1;
+                statPoints -= 1;
+            }
+        }
+
+        /// <summary>
+        /// Increment Constitution Value
+        /// </summary>
+        public void incConstitution()
+        {
+            if (statPoints > 0)
+            {
+                Constitution += 1;
+                statPoints -= 1;
+            }
+        }
+        /// <summary>
+        /// Increment Charisma Value
+        /// </summary>
+        public void incCharisma()
+        {
+            if (statPoints > 0)
+            {
+                Charisma += 1;
+                statPoints -= 1;
+            }
+        }
+        /// <summary>
+        /// Increment Luck Value
+        /// </summary>
+        public void incLuck()
+        {
+            if (statPoints > 0)
+            {
+                Luck += 1;
+                statPoints -= 1;
+            }
+        }
+
+
+    public void regenerateHealth() {
+        float regenHealth = MaxHealth * 0.1F;
+        Health += regenHealth;
+    }
+
+    public void regenerateMana() {
+        float regenMana = MaxMana * 0.1F;
+        Mana += regenMana;
+
+    }
+
     }
 }
