@@ -115,6 +115,7 @@
     <None Include="Resources\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\resetti.png" />
     <None Include="Resources\pokemonhole.png" />
     <None Include="Resources\pokemongrass.png" />
     <None Include="Resources\pokemonroof.png" />
@@ -175,8 +176,12 @@
     <Content Include="Resources\level-5b\Tiles.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\level-6\Map.txt" />
-    <Content Include="Resources\level-6\Tiles.txt" />
+    <Content Include="Resources\level-6\Map.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\level-6\Tiles.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\levelup.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

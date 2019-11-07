@@ -150,8 +150,8 @@ namespace GameLibrary {
                     case "outportal":
                         t = new OutportalTile(words[2][0], words[3], words[4]);
                         break;
-                    case "switch":
-                        t = new SwitchTile(words[2][0], words[3][0], words[4][0]);
+                    case "enemy":
+                        t = new EnemyTile(words[2][0], words[3]);
                         break;
                     default:
                         t = new WallTile("blank");
@@ -284,7 +284,7 @@ namespace GameLibrary {
             /// </summary>
             /// <param name="LoadImg"></param>
             /// <returns></returns>
-            public PictureBox MakePictureBox(Func<string, Bitmap> LoadImg) {
+            public virtual PictureBox MakePictureBox(Func<string, Bitmap> LoadImg) {
                 if (ImageFile == "blank") return null; // if the imagefile is the keyword blank, return null
                 // otherwise make a picture box
                 else return new PictureBox() {
@@ -343,25 +343,35 @@ namespace GameLibrary {
             }
         }
 
-        private class SwitchTile : Tile {
-            private char conditionTile;
-            private char falseTile;
-            private char trueTile;
+        private class EnemyTile : Tile {
+            private char tileBelow;
+            private Boolean defeated = false;
+            private PictureBox pb;
 
-
-            public SwitchTile(char conditionTile, char falseTile, char trueTile) : base("blank") {
-                this.conditionTile = conditionTile;
-                this.falseTile = falseTile;
-                this.trueTile = trueTile;
+            public EnemyTile(char tileBelow, string imageFile) : base(imageFile) {
+                this.tileBelow = tileBelow;
             }
 
             public override Position? Enter(Position pos) {
-                if (CurrentMap.tileDict[conditionTile].SwitchCondition) {
-                    return CurrentMap.tileDict[trueTile].Enter(pos);
+                if (defeated) {
+                    return CurrentMap.tileDict[tileBelow].Enter(pos);
                 }
                 else {
-                    return CurrentMap.tileDict[falseTile].Enter(pos);
+                    // initialize fight somehow
+                    if (defeated)
+                    {
+                        pb.Image = null;
+                    }
+                    return null;
                 }
+            }
+
+            public override PictureBox MakePictureBox(Func<string, Bitmap> LoadImg)
+            {
+                pb = CurrentMap.tileDict[tileBelow].MakePictureBox(LoadImg);
+                pb.Image = LoadImg(ImageFile);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                return pb;
             }
         }
     }
