@@ -277,7 +277,7 @@ namespace GameLibrary {
             }
         }
         /// <summary>
-        /// Increment Intelligence
+        /// Increment Intelligence value
         /// </summary>
         public void incIntelligence()
         {
@@ -288,6 +288,9 @@ namespace GameLibrary {
             }
         }
 
+        /// <summary>
+        /// Increment Wisdom Value
+        /// </summary>
         public void incWisdom()
         {
             if (statPoints > 0)
