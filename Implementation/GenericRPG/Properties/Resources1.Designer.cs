@@ -133,6 +133,16 @@ namespace GenericRPG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap character1 {
+            get {
+                object obj = ResourceManager.GetObject("character1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cobblestone {
             get {
                 object obj = ResourceManager.GetObject("cobblestone", resourceCulture);
@@ -196,6 +206,16 @@ namespace GenericRPG.Properties {
         internal static System.Drawing.Bitmap mariowall {
             get {
                 object obj = ResourceManager.GetObject("mariowall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuPicture {
+            get {
+                object obj = ResourceManager.GetObject("MenuPicture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
