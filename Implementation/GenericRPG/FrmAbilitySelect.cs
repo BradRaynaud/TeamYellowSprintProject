@@ -53,17 +53,45 @@ namespace GenericRPG
             character.Abilities[2] = selecteditems[2];
 
         }
-        public void btnComfirm_Click(object sender, EventArgs e)
+        public void checkLevel()
+        {
+            Character character = Game.GetGame().Character;
+            if (character.Level >= 3)
+            {
+                this.comboBox1.Items.Add("Stab");
+                this.comboBox2.Items.Add("Fireball");
+                this.comboBox3.Items.Add("Pocket Sand");
+            }
+            if (character.Level >= 5)
+            {
+
+                this.comboBox1.Items.Add("Slash");
+                this.comboBox2.Items.Add("Ice Blast");
+                
+            }
+            if (character.Level >= 8)
+            {
+                this.comboBox3.Items.Add("Meteor");
+                this.comboBox2.Items.Add("Heal");
+            }
+            if (character.Level >= 10)
+            {
+                this.comboBox3.Items.Add("Blood Magic");
+                this.comboBox1.Items.Add("Big Stab");
+
+
+            }
+            if(character.Level >= 20)
+            {
+                this.comboBox3.Items.Add("Mercy");
+            }
+        }
+            public void btnComfirm_Click(object sender, EventArgs e)
         {
             
             this.getInfo();
-            this.FormClosed += new FormClosedEventHandler(frmArena.closed);
+            frmArena.updateAbilities();
             Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
         }
     }  
 
