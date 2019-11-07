@@ -103,10 +103,7 @@ namespace GenericRPG {
                 {
                     FrmLevelUp frmLevelUp = new FrmLevelUp();
                     frmLevelUp.Show();
-                    FrmAbilitySelect ability = new FrmAbilitySelect();
-                    ability.Show();
-                
-             
+                   
                 }
             }
             else

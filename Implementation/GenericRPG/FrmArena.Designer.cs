@@ -644,6 +644,7 @@ namespace GenericRPG {
             {
                 this.btnWeakenAttack.Click += new System.EventHandler(this.btnStab_Click);
             }
+           
             // 
             // btnWeakenAttack
             // 
