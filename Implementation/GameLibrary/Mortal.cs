@@ -56,7 +56,7 @@ namespace GameLibrary {
         public float Wisdom { get; protected set; }
         public float Charisma { get; protected set; }
         public float Luck { get; protected set; }
-
+        public int statPoints { get; protected set; }
 
         public float Str { get; protected set; }
         public float Def { get; protected set; }
