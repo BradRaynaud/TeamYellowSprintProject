@@ -60,6 +60,11 @@ namespace GenericRPG
             this.FormClosed += new FormClosedEventHandler(frmArena.closed);
             Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }  
 
         
