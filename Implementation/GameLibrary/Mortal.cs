@@ -254,6 +254,9 @@ namespace GameLibrary {
             
         }
         
+        /// <summary>
+        /// Increment Strength Value
+        /// </summary>
         public void incStrength()
         {
             if(statPoints > 0)
@@ -262,7 +265,9 @@ namespace GameLibrary {
                 statPoints -= 1;
             }
         }
-
+        /// <summary>
+        /// Increment Dex Value
+        /// </summary>
         public void incDexterity()
         {
             if (statPoints > 0)
