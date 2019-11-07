@@ -106,8 +106,7 @@ namespace GameLibrary {
             MaxMana += LVLINC_MANA;
             Health = MaxHealth;
             Mana = MaxMana;
-            
-            
+
             statPoints += 7;
             // other stats
             Str += LVLINC_STR;
@@ -223,13 +222,7 @@ namespace GameLibrary {
                 receiver.Health -= baseDamage;
             }
         }
-        /*
-        //function to check if characters stats are below 0 ie mana,strength,etc
-        public void statCheck(Mortal Character, Mortal receiver)
-        {
-            if(Character)
-        }
-        */
+       
         public bool spellCost(float x)
         {
             if(Mana-x>=0)
