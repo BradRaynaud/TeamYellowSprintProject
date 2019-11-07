@@ -300,6 +300,9 @@ namespace GameLibrary {
             }
         }
 
+        /// <summary>
+        /// Increment Constitution Value
+        /// </summary>
         public void incConstitution()
         {
             if (statPoints > 0)
