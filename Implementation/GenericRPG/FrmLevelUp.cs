@@ -36,6 +36,7 @@ namespace GenericRPG {
             lblOldLuck.Text = ((float)Math.Round(character.Luck)).ToString();
 
             character.LevelUp();
+            ptstoAlloc.Text = character.statPoints.ToString();
 
             // New Health, Mana, Level
             lblNewLevel.Text  = character.Level.ToString();
@@ -54,6 +55,75 @@ namespace GenericRPG {
 
         private void btnClose_Click(object sender, EventArgs e) {
             Close();
+        }
+        private void AbilitySelect_Click(object sender, EventArgs e)
+        {
+            FrmAbilitySelect ability = new FrmAbilitySelect();
+            ability.Show();
+        }
+
+        // Allocates str skill pt
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            character.incStrength();
+
+            ptstoAlloc.Text = character.statPoints.ToString();
+            lblNewStr.Text = ((float)Math.Round(character.Strength)).ToString();
+        }
+
+        private void dexAlloc_Click(object sender, EventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            character.incDexterity();
+
+            ptstoAlloc.Text = character.statPoints.ToString();
+            lblNewDex.Text = ((float)Math.Round(character.Dexterity)).ToString();
+        }
+
+        private void intAlloc_Click(object sender, EventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            character.incIntelligence();
+
+            ptstoAlloc.Text = character.statPoints.ToString();
+            lblNewInt.Text = ((float)Math.Round(character.Intelligence)).ToString();
+        }
+
+        private void wisAlloc_Click(object sender, EventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            character.incWisdom();
+
+            ptstoAlloc.Text = character.statPoints.ToString();
+            lblNewWis.Text = ((float)Math.Round(character.Wisdom)).ToString();
+        }
+
+        private void conAlloc_Click(object sender, EventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            character.incConstitution();
+
+            ptstoAlloc.Text = character.statPoints.ToString();
+            lblNewCon.Text = ((float)Math.Round(character.Constitution)).ToString();
+        }
+
+        private void charAlloc_Click(object sender, EventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            character.incCharisma();
+
+            ptstoAlloc.Text = character.statPoints.ToString();
+            lblNewChar.Text = ((float)Math.Round(character.Charisma)).ToString();
+        }
+
+        private void luckAlloc_Click(object sender, EventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            character.incLuck();
+
+            ptstoAlloc.Text = character.statPoints.ToString();
+            lblNewLuck.Text = ((float)Math.Round(character.Luck)).ToString();
         }
         private void AbilitySelect_Click(object sender, EventArgs e)
         {
