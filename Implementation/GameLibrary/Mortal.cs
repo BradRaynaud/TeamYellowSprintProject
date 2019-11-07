@@ -56,7 +56,6 @@ namespace GameLibrary {
         public float Wisdom { get; protected set; }
         public float Charisma { get; protected set; }
         public float Luck { get; protected set; }
-        public int statPoints { get; protected set; }
 
 
         public float Str { get; protected set; }
@@ -108,8 +107,6 @@ namespace GameLibrary {
             Health = MaxHealth;
             Mana = MaxMana;
 
-            statPoints += 7;
-            /*
             // other stats
             Str += LVLINC_STR;
             Def += LVLINC_DEF;
@@ -123,7 +120,6 @@ namespace GameLibrary {
             Intelligence += LVLINC_INTELLIGENCE;
             Wisdom += LVLINC_WISDOM;
             Charisma += LVLINC_CHARISMA;
-            */
         }
         public void RefillHealthAndMana() {
             Health = MaxHealth;
@@ -165,19 +161,28 @@ namespace GameLibrary {
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
             receiver.Health -= (baseDamage * randMult);
         }
+        public void BigStab(Mortal receiver)
+        {
+            if (Str <= 0)
+            {
+                return;
+            }
+            float baseDamage = Math.Abs(Str * 2.8f - receiver.Def);
+            float randMax = 1 + .5f;
+            float randMin = 1 - .4f;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
+        }
+        public void Mercy(Mortal receiver)
+        {
+            receiver.Health = 1;
+        }
         public void Attack2(Mortal receiver)
         {
-            /*
-            if(Mana != 0)
-            {
-                float baseDamage = (float) Math.Abs(Mana * .75 + Level);
-                receiver.Health -= baseDamage;
-                Mana = 0;
-            }
-            return; 
-            */
+           
             receiver.Health = 0;
         }
+        
         public void Fireball(Mortal receiver)
         {
             if(spellCost(30)==true)
@@ -188,7 +193,7 @@ namespace GameLibrary {
         }
         public void Heal(Mortal character)
         {
-            if(spellCost(5)==true)
+            if(spellCost(10)==true)
             {
                 character.Health += 15;
             }
@@ -202,10 +207,18 @@ namespace GameLibrary {
         }
         public void BloodMagic(Mortal character, Mortal receiver)
         {
-              if(character.Health-15 >=0)
+              if(character.Health-50 >=0)
             {
-                character.Health -= 15;
+                character.Health -= 50;
                 receiver.Health -= 65;
+            }
+        }
+        public void IceBlast(Mortal receiver)
+        {
+            if (spellCost(35) == true)
+            {
+                float baseDamage = (float)Math.Abs(Intelligence * (3 + Level));
+                receiver.Health -= baseDamage;
             }
         }
         /*
@@ -243,77 +256,5 @@ namespace GameLibrary {
             
         }
         
-        public virtual void incStrength()
-        {
-            Console.WriteLine("Str");
-            if(statPoints > 0)
-            {
-                Strength += 1;
-                statPoints -= 1;
-            }
-            
-        }
-
-        public virtual void incDexterity()
-        {
-            
-            if (statPoints > 0)
-            {
-                Dexterity += 1;
-                statPoints -= 1;
-            }
-
-        }
-
-        public virtual void incConstitution()
-        {
-            if (statPoints > 0)
-            {
-                Constitution += 1;
-                statPoints -= 1;
-            }
-
-        }
-
-        public virtual void incIntelligence()
-        {
-            if (statPoints > 0)
-            {
-                Intelligence += 1;
-                statPoints -= 1;
-            }
-
-        }
-
-        public virtual void incWisdom()
-        {
-            if (statPoints > 0)
-            {
-                Wisdom += 1;
-                statPoints -= 1;
-            }
-
-        }
-
-        public virtual void incCharisma()
-        {
-            if (statPoints > 0)
-            {
-                Charisma += 1;
-                statPoints -= 1;
-            }
-
-        }
-
-        public virtual void incLuck()
-        {
-            if (statPoints > 0)
-            {
-                Luck += 1;
-                statPoints -= 1;
-            }
-
-        }
-
     }
 }
