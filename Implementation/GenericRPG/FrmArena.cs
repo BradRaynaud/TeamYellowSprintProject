@@ -43,7 +43,7 @@ namespace GenericRPG {
             UpdateStats();
 
             // pictures
-            picCharacter.BackgroundImage = Resources.character;
+            picCharacter.BackgroundImage = character.Pic.Image;
             picEnemy.BackgroundImage = enemy.Img;
 
             // names
@@ -96,11 +96,13 @@ namespace GenericRPG {
         {
             if (enemy.Health <= 0)
             {
-                character.GainXP(enemy.XpDropped, enemy.Level, character.Level);
-                lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
-                lblEndFightMessage.Visible = true;
-                character.regenerateHealth();
-                character.regenerateMana();
+                if (Game.GetGame().State == GameState.FIGHTING) {
+                    character.GainXP(enemy.XpDropped, enemy.Level, character.Level);
+                    lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
+                    lblEndFightMessage.Visible = true;
+                    character.regenerateHealth();
+                    character.regenerateMana();
+                }
                 Refresh();
                 Thread.Sleep(1200);
                 EndFight();
