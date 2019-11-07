@@ -80,10 +80,10 @@ namespace GameLibrary {
             };
 
             Position p = new Position(map.CharacterStartRow, map.CharacterStartCol);
-            Position pPB = RowColToTopLeft(p);
+            Position topleft = RowColToTopLeft(p);
 
-            pb.Top = pPB.row;
-            pb.Left = pPB.col;
+            pb.Top = topleft.row;
+            pb.Left = topleft.col;
             grpBox.Controls.Add(pb);
             pb.BringToFront();
 
@@ -151,7 +151,7 @@ namespace GameLibrary {
                         t = new OutportalTile(words[2][0], words[3], words[4]);
                         break;
                     case "enemy":
-                        t = new EnemyTile(words[2][0], words[3]);
+                        t = new EnemyTile(words[2][0], Convert.ToInt32(words[3]), words[4]);
                         break;
                     default:
                         t = new WallTile("blank");
@@ -208,6 +208,11 @@ namespace GameLibrary {
 
         public Position? Enter(Position pos)
         {
+            if (Game.GetGame().State == GameState.FIGHTING || Game.GetGame().State == GameState.DEAD)
+            {
+                return null;
+            }
+
             // if the position is outside of the map, return null
             if (pos.row < 0 || pos.row >= NumRows ||
                 pos.col < 0 || pos.col >= NumCols) {
@@ -225,6 +230,7 @@ namespace GameLibrary {
             // otherwise see if the character should get a random encounter
             if (rand.NextDouble() < encounterChance) {
                 encounterChance = 0.15;
+                Game.GetGame().SetEnemy(new Enemy(rand.Next(character.Level + 1), loadImg("enemy")));
                 Game.GetGame().ChangeState(GameState.FIGHTING);
             }
             else {
@@ -347,9 +353,11 @@ namespace GameLibrary {
             private char tileBelow;
             private Boolean defeated = false;
             private PictureBox pb;
+            private int level;
 
-            public EnemyTile(char tileBelow, string imageFile) : base(imageFile) {
+            public EnemyTile(char tileBelow, int level, string imageFile) : base(imageFile) {
                 this.tileBelow = tileBelow;
+                this.level = level;
             }
 
             public override Position? Enter(Position pos) {
@@ -357,9 +365,11 @@ namespace GameLibrary {
                     return CurrentMap.tileDict[tileBelow].Enter(pos);
                 }
                 else {
-                    // initialize fight somehow
-                    if (defeated)
-                    {
+                    Game.GetGame().ChangeState(GameState.FIGHTING);
+                    Enemy enemy = new Enemy(level, loadImg(ImageFile));
+                    Game.GetGame().SetEnemy(enemy);
+                    if (enemy.Health <= 0) {
+                        defeated = true;
                         pb.Image = null;
                     }
                     return null;

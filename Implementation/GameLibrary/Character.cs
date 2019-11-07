@@ -62,6 +62,7 @@ namespace GameLibrary {
             Position topleft = Map.RowColToTopLeft(pos);
             Pic.Left = topleft.col;
             Pic.Top = topleft.row;
+            Pic.BackgroundImage = Map.CurrentMap.GetBackgroundImage(pos);
         }
     
         /// <summary>

@@ -19,6 +19,8 @@ namespace GameLibrary {
         public Character Character { get; private set; }
         public GameState State { get; private set; }
 
+        public Enemy CurrentEnemy { get; private set; } = null;
+
         private Game() {
             State = GameState.LOADING;
         }
@@ -35,6 +37,11 @@ namespace GameLibrary {
 
         public void SetCharacter(Character character) {
             Character = character;
+        }
+
+        public void SetEnemy(Enemy enemy)
+        {
+            CurrentEnemy = enemy;
         }
     }
 }

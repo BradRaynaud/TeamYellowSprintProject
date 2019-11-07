@@ -2,5 +2,5 @@
 1 wall animalcrossingrock
 2 start animalcrossinggrass
 3 outportal 5 level-5a animalcrossinghole
-4 enemy 5 resetti
+4 enemy 5 20 resetti
 5 path animalcrossinghole
