@@ -322,7 +322,9 @@ namespace GameLibrary {
                 statPoints -= 1;
             }
         }
-
+        /// <summary>
+        /// Increment Luck Value
+        /// </summary>
         public void incLuck()
         {
             if (statPoints > 0)
