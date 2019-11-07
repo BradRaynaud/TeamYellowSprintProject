@@ -71,6 +71,9 @@ namespace GameLibrary {
             SetLevel(level);
             rand = new Random();
         }
+        /// <summary>
+        /// Reset stats to base values on death
+        /// </summary>
         public virtual void ResetStats() {
             Level = 1;
             MaxHealth = INIT_HEALTH;
@@ -92,11 +95,18 @@ namespace GameLibrary {
             Luck = INIT_LUCK;
 
         }
+        /// <summary>
+        /// Sets the player's level
+        /// </summary>
+        /// <param name="level"></param>
         public void SetLevel(int level) {
             for (int i = 1; i < level; i++) {
             LevelUp();
             }
         }
+        /// <summary>
+        /// Function to handle level ups
+        /// </summary>
         public virtual void LevelUp() {
             // level increases
             Level++;
@@ -110,6 +120,8 @@ namespace GameLibrary {
             statPoints += 7;
 
             /*
+            // Dont need increment value assuming statpoint
+            // Alloc is still implemented
             // other stats
             Str += LVLINC_STR;
             Def += LVLINC_DEF;
@@ -125,6 +137,7 @@ namespace GameLibrary {
             Charisma += LVLINC_CHARISMA;
             */
         }
+        // Refill Health and Mana
         public void RefillHealthAndMana() {
             Health = MaxHealth;
             Mana = MaxMana;
