@@ -106,7 +106,9 @@ namespace GameLibrary {
             MaxMana += LVLINC_MANA;
             Health = MaxHealth;
             Mana = MaxMana;
-
+            
+            
+            statPoints += 7;
             // other stats
             Str += LVLINC_STR;
             Def += LVLINC_DEF;
