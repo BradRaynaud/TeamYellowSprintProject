@@ -276,7 +276,9 @@ namespace GameLibrary {
                 statPoints -= 1;
             }
         }
-
+        /// <summary>
+        /// Increment Intelligence
+        /// </summary>
         public void incIntelligence()
         {
             if (statPoints > 0)
