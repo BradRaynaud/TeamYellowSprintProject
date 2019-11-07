@@ -34,6 +34,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblOldMana = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ptstoAlloc = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.lblOldLuck = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.lblOldChar = new System.Windows.Forms.Label();
@@ -70,6 +72,13 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.strengthAlloc = new System.Windows.Forms.Button();
+            this.dexAlloc = new System.Windows.Forms.Button();
+            this.intAlloc = new System.Windows.Forms.Button();
+            this.wisAlloc = new System.Windows.Forms.Button();
+            this.conAlloc = new System.Windows.Forms.Button();
+            this.charAlloc = new System.Windows.Forms.Button();
+            this.luckAlloc = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -193,6 +202,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.ptstoAlloc);
+            this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.lblOldLuck);
             this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.lblOldChar);
@@ -216,8 +227,31 @@
             this.panel1.Controls.Add(this.lblOldStr);
             this.panel1.Location = new System.Drawing.Point(34, 105);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(184, 389);
+            this.panel1.Size = new System.Drawing.Size(184, 408);
             this.panel1.TabIndex = 25;
+            // 
+            // ptstoAlloc
+            // 
+            this.ptstoAlloc.AutoSize = true;
+            this.ptstoAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ptstoAlloc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ptstoAlloc.Location = new System.Drawing.Point(99, 379);
+            this.ptstoAlloc.Name = "ptstoAlloc";
+            this.ptstoAlloc.Size = new System.Drawing.Size(85, 29);
+            this.ptstoAlloc.TabIndex = 39;
+            this.ptstoAlloc.Text = "label1";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label23.Location = new System.Drawing.Point(-1, 379);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(107, 29);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "Pts Left:";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblOldLuck
             // 
@@ -646,6 +680,83 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.AbilitySelect_Click);
             // 
+            // strengthAlloc
+            // 
+            this.strengthAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.strengthAlloc.Location = new System.Drawing.Point(224, 281);
+            this.strengthAlloc.Name = "strengthAlloc";
+            this.strengthAlloc.Size = new System.Drawing.Size(23, 29);
+            this.strengthAlloc.TabIndex = 30;
+            this.strengthAlloc.Text = "+";
+            this.strengthAlloc.UseVisualStyleBackColor = true;
+            this.strengthAlloc.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dexAlloc
+            // 
+            this.dexAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dexAlloc.Location = new System.Drawing.Point(224, 310);
+            this.dexAlloc.Name = "dexAlloc";
+            this.dexAlloc.Size = new System.Drawing.Size(23, 29);
+            this.dexAlloc.TabIndex = 31;
+            this.dexAlloc.Text = "+";
+            this.dexAlloc.UseVisualStyleBackColor = true;
+            this.dexAlloc.Click += new System.EventHandler(this.dexAlloc_Click);
+            // 
+            // intAlloc
+            // 
+            this.intAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intAlloc.Location = new System.Drawing.Point(224, 339);
+            this.intAlloc.Name = "intAlloc";
+            this.intAlloc.Size = new System.Drawing.Size(23, 29);
+            this.intAlloc.TabIndex = 32;
+            this.intAlloc.Text = "+";
+            this.intAlloc.UseVisualStyleBackColor = true;
+            this.intAlloc.Click += new System.EventHandler(this.intAlloc_Click);
+            // 
+            // wisAlloc
+            // 
+            this.wisAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wisAlloc.Location = new System.Drawing.Point(224, 368);
+            this.wisAlloc.Name = "wisAlloc";
+            this.wisAlloc.Size = new System.Drawing.Size(23, 29);
+            this.wisAlloc.TabIndex = 33;
+            this.wisAlloc.Text = "+";
+            this.wisAlloc.UseVisualStyleBackColor = true;
+            this.wisAlloc.Click += new System.EventHandler(this.wisAlloc_Click);
+            // 
+            // conAlloc
+            // 
+            this.conAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.conAlloc.Location = new System.Drawing.Point(224, 397);
+            this.conAlloc.Name = "conAlloc";
+            this.conAlloc.Size = new System.Drawing.Size(23, 29);
+            this.conAlloc.TabIndex = 34;
+            this.conAlloc.Text = "+";
+            this.conAlloc.UseVisualStyleBackColor = true;
+            this.conAlloc.Click += new System.EventHandler(this.conAlloc_Click);
+            // 
+            // charAlloc
+            // 
+            this.charAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.charAlloc.Location = new System.Drawing.Point(224, 426);
+            this.charAlloc.Name = "charAlloc";
+            this.charAlloc.Size = new System.Drawing.Size(23, 29);
+            this.charAlloc.TabIndex = 35;
+            this.charAlloc.Text = "+";
+            this.charAlloc.UseVisualStyleBackColor = true;
+            this.charAlloc.Click += new System.EventHandler(this.charAlloc_Click);
+            // 
+            // luckAlloc
+            // 
+            this.luckAlloc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.luckAlloc.Location = new System.Drawing.Point(224, 456);
+            this.luckAlloc.Name = "luckAlloc";
+            this.luckAlloc.Size = new System.Drawing.Size(23, 29);
+            this.luckAlloc.TabIndex = 36;
+            this.luckAlloc.Text = "+";
+            this.luckAlloc.UseVisualStyleBackColor = true;
+            this.luckAlloc.Click += new System.EventHandler(this.luckAlloc_Click);
+            // 
             // FrmLevelUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -654,6 +765,13 @@
             this.BackgroundImage = global::GenericRPG.Properties.Resources.character_levelup;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(804, 582);
+            this.Controls.Add(this.luckAlloc);
+            this.Controls.Add(this.charAlloc);
+            this.Controls.Add(this.conAlloc);
+            this.Controls.Add(this.wisAlloc);
+            this.Controls.Add(this.intAlloc);
+            this.Controls.Add(this.dexAlloc);
+            this.Controls.Add(this.strengthAlloc);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panel2);
@@ -720,5 +838,14 @@
         private System.Windows.Forms.Label lblNewLuck;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button strengthAlloc;
+        private System.Windows.Forms.Button dexAlloc;
+        private System.Windows.Forms.Button intAlloc;
+        private System.Windows.Forms.Button wisAlloc;
+        private System.Windows.Forms.Button conAlloc;
+        private System.Windows.Forms.Button charAlloc;
+        private System.Windows.Forms.Button luckAlloc;
+        private System.Windows.Forms.Label ptstoAlloc;
+        private System.Windows.Forms.Label label23;
     }
 }

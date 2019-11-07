@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAbilitySelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAbilitySelect.Designer.cs">
+      <DependentUpon>FrmAbilitySelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmArena.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAbilitySelect.resx">
+      <DependentUpon>FrmAbilitySelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmArena.resx">
       <DependentUpon>FrmArena.cs</DependentUpon>
     </EmbeddedResource>
