@@ -4,6 +4,7 @@ namespace GameLibrary {
     public class Mortal 
     {
         #region Constants
+  
         private const float INIT_HEALTH = 100;
         private const float INIT_STR = 10;
         private const float INIT_DEF = 5;
@@ -45,6 +46,8 @@ namespace GameLibrary {
         public float MaxMana { get; protected set; }
         public float Mana { get; protected set; }
 
+
+        public string[] Abilities = { "Simple Attack", "Weaken", "BIG MOVE" };
         // New Stats
         public float Strength { get; protected set; }
         public float Dexterity { get; protected set; }
@@ -122,28 +125,84 @@ namespace GameLibrary {
             Health = MaxHealth;
             Mana = MaxMana;
         }
-        public void SimpleAttack(Mortal receiver) 
+        public void SimpleAttack(Mortal receiver)
         {
-            if(Str <= 0)
+            if (Str <= 0)
             {
                 return;
             }
-            float baseDamage = Math.Abs(Str * 1.2f - receiver.Def);
+            float baseDamage = Math.Abs(Str * 1.8f - receiver.Def);
             float randMax = 1 + SIMPLEATTACK_RANDOM_AMT;
             float randMin = 1 - SIMPLEATTACK_RANDOM_AMT;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
             receiver.Health -= (baseDamage * randMult);
         }
+        public void Slash(Mortal receiver)
+        {
+            if (Str <= 0)
+            {
+                return;
+            }
+            float baseDamage = Math.Abs(Str * 2.2f - receiver.Def);
+            float randMax = 1 + .5f;
+            float randMin = 1 - .5f;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
+        }
+        public void Stab(Mortal receiver)
+        {
+            if (Str <= 0)
+            {
+                return;
+            }
+            float baseDamage = Math.Abs(Str * 2.4f - receiver.Def);
+            float randMax = 1 + .4f;
+            float randMin = 1 - .4f;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
+        }
         public void Attack2(Mortal receiver)
         {
+            /*
             if(Mana != 0)
             {
                 float baseDamage = (float) Math.Abs(Mana * .75 + Level);
                 receiver.Health -= baseDamage;
                 Mana = 0;
             }
-            return;
-           
+            return; 
+            */
+            receiver.Health = 0;
+        }
+        public void Fireball(Mortal receiver)
+        {
+            if(spellCost(30)==true)
+            {
+                float baseDamage = (float)Math.Abs(Intelligence * (2 + Level));
+                receiver.Health -= baseDamage;
+            }                     
+        }
+        public void Heal(Mortal character)
+        {
+            if(spellCost(5)==true)
+            {
+                character.Health += 15;
+            }
+        }
+        public void Meteor(Mortal receiver)
+        {
+            if (spellCost(40) == true)
+            {
+                receiver.Health -= 50;
+            }
+        }
+        public void BloodMagic(Mortal character, Mortal receiver)
+        {
+              if(character.Health-15 >=0)
+            {
+                character.Health -= 15;
+                receiver.Health -= 65;
+            }
         }
         /*
         //function to check if characters stats are below 0 ie mana,strength,etc
@@ -152,14 +211,33 @@ namespace GameLibrary {
             if(Character)
         }
         */
+        public bool spellCost(float x)
+        {
+            if(Mana-x>=0)
+            {
+                Mana -= x;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+     
         public void WeakenAttack(Mortal receiver)
         {
-            if (receiver.Str <= 0 )
+            if (receiver.Str < 0 )
             {
                 return;
             }
-            receiver.Str -= 1;
-            Mana -= 10;
+            if(spellCost(10) == true)
+            {
+                receiver.Str -= 1;
+            }
+            
+            
         }
+        
     }
 }

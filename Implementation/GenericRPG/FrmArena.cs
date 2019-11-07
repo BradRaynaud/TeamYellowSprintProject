@@ -5,15 +5,17 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
+
 namespace GenericRPG {
+    
     public partial class FrmArena : Form {
     private Game game;
     private Character character;
     private Enemy enemy;
     private Random rand;
-    
+    //public string[] Ability;
     public FrmArena() {
-        InitializeComponent();
+    InitializeComponent();
     }
     private void btnEndFight_Click(object sender, EventArgs e) {
         EndFight();
@@ -33,17 +35,19 @@ namespace GenericRPG {
         UpdateStats();
 
         // pictures
-        picCharacter.BackgroundImage = character.Pic.Image;
+        picCharacter.BackgroundImage = character.Pic.BackgroundImage;
         picEnemy.BackgroundImage = enemy.Img;
 
         // names
         lblPlayerName.Text = character.Name;
         lblEnemyName.Text = enemy.Name;
     }
-    /// <summary>
-    /// This function updates the stats on the FrmArena menu
-    /// </summary>
-    public void UpdateStats() {
+    
+        /// <summary>
+        /// This function updates the stats on the FrmArena menu
+        /// </summary>
+
+        public void UpdateStats() {
         // Update the Player Level and Health
         lblPlayerLevel.Text = character.Level.ToString();
         lblPlayerHealth.Text = Math.Round(character.Health).ToString();
@@ -73,14 +77,24 @@ namespace GenericRPG {
         //lblPlayerHealth.Text = Math.Round(character.Health).ToString();
         //lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
     }
+    public  void closed(object sender, FormClosedEventArgs e)
+        {
+            Character character = Game.GetGame().Character;
+            if (character.Abilities[0] == "Slash")
+            {
+                this.btnSimpleAttack.Text = "Slash";
+                Console.WriteLine("oopsiess");
+            }
+        }
+   
     //function to encapsulate the process of combat
     //called after an ability is used/processed
-    private void combatStuff()
+        private void combatStuff()
     {
             if (enemy.Health <= 0)
             {
-                int XPreward = character.GainXP(enemy.XpDropped, enemy.Level, character.Level);
-                lblEndFightMessage.Text = "You Gained " + XPreward + " xp!";
+                character.GainXP(enemy.XpDropped,enemy.Level,character.Level);
+                lblEndFightMessage.Text = "You Gained " + Math.Round(enemy.XpDropped) + " xp!";
                 lblEndFightMessage.Visible = true;
                 Refresh();
                 Thread.Sleep(1200);
@@ -89,6 +103,7 @@ namespace GenericRPG {
                 {
                     FrmLevelUp frmLevelUp = new FrmLevelUp();
                     frmLevelUp.Show();
+                   
                 }
             }
             else
@@ -154,12 +169,69 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
-        /// <summary>
-        /// This function executies on Run button click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnRun_Click(object sender, EventArgs e) {
+    private void btnHeal_Click(object sender, EventArgs e)
+    {
+        character.Heal(character);
+        combatStuff();
+    }
+    private void btnFireball_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Fireball(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+    private void btnSlash_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Slash(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+
+    }
+    private void btnStab_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Stab(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+    private void btnMeteor_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Meteor(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+    private void btnBloodMagic_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.BloodMagic(character,enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+
+            /// <summary>
+            /// This function executies on Run button click
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void btnRun_Click(object sender, EventArgs e) {
         if (rand.NextDouble() < 0.25) {
         lblEndFightMessage.Text = "You Ran Like a Coward!";
         lblEndFightMessage.Visible = true;
@@ -168,7 +240,7 @@ namespace GenericRPG {
         EndFight();
         }
         else {
-        enemy.SimpleAttack(character);
+        combatStuff();
         UpdateStats();
         }
     }
