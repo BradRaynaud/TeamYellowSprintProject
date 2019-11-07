@@ -6,9 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 
 
-namespace GenericRPG
-{
-
+namespace GenericRPG {
     public partial class FrmArena : Form
     {
         private Game game;
