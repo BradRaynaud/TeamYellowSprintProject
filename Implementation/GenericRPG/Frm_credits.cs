@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace GenericRPG
 {
     public partial class Frm_credits : Form
     {
@@ -39,8 +39,8 @@ namespace WindowsFormsApp1
 
         public void Btn_Menu_Click_1(object sender, EventArgs e)
         {
-            
-            
+            Close();
+
         }
     }
 }

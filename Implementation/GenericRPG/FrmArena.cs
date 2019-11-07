@@ -15,7 +15,7 @@ namespace GenericRPG {
     private Random rand;
     //public string[] Ability;
     public FrmArena() {
-    InitializeComponent();
+        InitializeComponent();
     }
     private void btnEndFight_Click(object sender, EventArgs e) {
         EndFight();
