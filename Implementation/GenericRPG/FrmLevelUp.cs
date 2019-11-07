@@ -56,12 +56,7 @@ namespace GenericRPG {
         private void btnClose_Click(object sender, EventArgs e) {
             Close();
         }
-        private void AbilitySelect_Click(object sender, EventArgs e)
-        {
-            FrmAbilitySelect ability = new FrmAbilitySelect();
-            ability.Show();
-        }
-
+        
         // Allocates str skill pt
         private void button2_Click(object sender, EventArgs e)
         {

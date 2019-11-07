@@ -108,6 +108,8 @@ namespace GameLibrary {
             Mana = MaxMana;
 
             statPoints += 7;
+
+            /*
             // other stats
             Str += LVLINC_STR;
             Def += LVLINC_DEF;
@@ -121,6 +123,7 @@ namespace GameLibrary {
             Intelligence += LVLINC_INTELLIGENCE;
             Wisdom += LVLINC_WISDOM;
             Charisma += LVLINC_CHARISMA;
+            */
         }
         public void RefillHealthAndMana() {
             Health = MaxHealth;
@@ -251,5 +254,69 @@ namespace GameLibrary {
             
         }
         
+        public void incStrength()
+        {
+            if(statPoints > 0)
+            {
+                Strength += 1;
+                statPoints -= 1;
+            }
+        }
+
+        public void incDexterity()
+        {
+            if (statPoints > 0)
+            {
+                Dexterity += 1;
+                statPoints -= 1;
+            }
+        }
+
+        public void incIntelligence()
+        {
+            if (statPoints > 0)
+            {
+                Intelligence += 1;
+                statPoints -= 1;
+            }
+        }
+
+        public void incWisdom()
+        {
+            if (statPoints > 0)
+            {
+                Wisdom += 1;
+                statPoints -= 1;
+            }
+        }
+
+        public void incConstitution()
+        {
+            if (statPoints > 0)
+            {
+                Constitution += 1;
+                statPoints -= 1;
+            }
+        }
+
+        public void incCharisma()
+        {
+            if (statPoints > 0)
+            {
+                Charisma += 1;
+                statPoints -= 1;
+            }
+        }
+
+        public void incLuck()
+        {
+            if (statPoints > 0)
+            {
+                Luck += 1;
+                statPoints -= 1;
+            }
+        }
+
+
     }
 }

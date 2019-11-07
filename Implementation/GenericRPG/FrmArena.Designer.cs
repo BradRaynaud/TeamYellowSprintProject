@@ -458,9 +458,9 @@ namespace GenericRPG {
             // 
             this.lblEnemyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyName.ForeColor = System.Drawing.Color.White;
-            this.lblEnemyName.Location = new System.Drawing.Point(24, 12);
+            this.lblEnemyName.Location = new System.Drawing.Point(-13, 12);
             this.lblEnemyName.Name = "lblEnemyName";
-            this.lblEnemyName.Size = new System.Drawing.Size(178, 24);
+            this.lblEnemyName.Size = new System.Drawing.Size(254, 24);
             this.lblEnemyName.TabIndex = 10;
             this.lblEnemyName.Text = "Enemy Name";
             this.lblEnemyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
