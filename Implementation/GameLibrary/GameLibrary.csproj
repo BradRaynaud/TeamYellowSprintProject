@@ -52,7 +52,25 @@
     <Compile Include="Map.cs" />
     <Compile Include="Mortal.cs" />
     <Compile Include="MoveDir.cs" />
+    <Compile Include="Music\Music.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Music.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Music\L4Music.wav" />
+    <Content Include="Music\L1Music.wav" />
+    <Content Include="Music\L2Music.wav" />
+    <Content Include="Music\L3Music.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Music\Music.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Music.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

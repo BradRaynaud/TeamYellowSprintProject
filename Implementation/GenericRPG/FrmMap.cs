@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace GenericRPG {
     public partial class FrmMap : Form {
@@ -17,11 +18,14 @@ namespace GenericRPG {
         }
 
         private void FrmMap_Load(object sender, EventArgs e) {
+            
+            
             game = Game.GetGame();
 
             character = Map.InitializeMaps(MapFolder, Frm_CharacterSelect.charFile, grpMap,
               str => Resources.ResourceManager.GetObject(str) as Bitmap
             );
+            
 
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;

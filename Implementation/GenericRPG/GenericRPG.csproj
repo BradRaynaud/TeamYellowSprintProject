@@ -194,6 +194,7 @@
     <None Include="Resources\animalcrossinghole.png" />
     <None Include="Resources\AltCharacter.png" />
     <None Include="Resources\Bowser.png" />
+    <Content Include="Resources\music.wav" />
     <Content Include="Resources\cobblestone.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

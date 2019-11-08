@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Media;
 
 namespace GameLibrary {
     public class Map {
@@ -42,10 +43,16 @@ namespace GameLibrary {
             if (mapDict.ContainsKey(mapFolder)) {
                 mapDict[mapFolder].grpMap.Show();
                 CurrentMap = mapDict[mapFolder];
+                                
+                SoundPlayer sp = new SoundPlayer(findMusic(mapFolder));
+                sp.Play();
+
             }
             // otherwise, make it (it will automatically be shown and set itself as current)
             else {
                 new Map().LoadMap(mapFolder);
+                SoundPlayer sp = new SoundPlayer(findMusic(mapFolder));
+                sp.Play();
             }
 
             // update window size to accommodate new map
@@ -53,7 +60,64 @@ namespace GameLibrary {
             grpBox.Width = CurrentMap.grpMap.Width;
         }
 
-        
+        private static System.IO.Stream findMusic(string mapFolder)
+        {
+            System.IO.Stream str;
+            if (mapFolder=="level-2")
+            {
+                // Minecraft theme
+                str = Music.Music.L2Music;
+                return str;
+            }
+            else if (mapFolder=="level-3a" | mapFolder=="level-3b")
+            {
+                // Animal Crossing theme? uses Lav Pokemon theme
+                str = Music.Music.L3Music;
+                return str;
+            }
+            else if (mapFolder == "level-4a")
+            {
+                // Minecraft theme
+                str = Music.Music.L2Music;
+                return str;
+            }
+            else if (mapFolder == "level-4b")
+            {
+                // Mario Theme
+                str = Music.Music.L1Music;
+                return str;
+            }
+            else if (mapFolder == "level-5a")
+            {
+                //Pokemon theme
+                str = Music.Music.L3Music;
+                return str;
+            }
+            else if (mapFolder == "level-5b")
+            {
+                str = Music.Music.L1Music;
+                return str;
+            }
+            else if (mapFolder == "level-7")
+            {
+                // Second Boss Room
+                str = Music.Music.L4Music;
+                return str;
+            }
+            else if (mapFolder == "level-6")
+            {
+                // First Boss room
+                str = Music.Music.L4Music;
+                return str;
+            }
+            else
+            {
+                str = Music.Music.L1Music;
+                return str;
+            }
+            
+        }
+
         public static Character InitializeMaps(string firstMapFolder, string characterImage, GroupBox grpBox, Func<string, Bitmap> LoadImg) {
             Map.grpBox = grpBox;
             loadImg = LoadImg;
@@ -82,6 +146,8 @@ namespace GameLibrary {
                 BackgroundImageLayout = ImageLayout.Stretch
             };
 
+
+
             Position p = new Position(map.CharacterStartRow, map.CharacterStartCol);
             Position topleft = RowColToTopLeft(p);
 
@@ -92,6 +158,12 @@ namespace GameLibrary {
 
             // initialize the character and return it
             character = new Character(pb, p);
+
+            // Plays level 1 theme upon entering player name
+            System.IO.Stream str = Music.Music.L1Music;
+            SoundPlayer sp = new SoundPlayer(str);
+            sp.Play();
+
             return character;
         }
 
