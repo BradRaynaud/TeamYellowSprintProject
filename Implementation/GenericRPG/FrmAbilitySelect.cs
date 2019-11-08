@@ -79,9 +79,8 @@ namespace GenericRPG
                 this.comboBox3.Items.Add("Blood Magic");
                 this.comboBox1.Items.Add("Big Stab");
 
-
             }
-            if(character.Level >= 20)
+            if(character.Level >= 30)
             {
                 this.comboBox3.Items.Add("Mercy");
             }
