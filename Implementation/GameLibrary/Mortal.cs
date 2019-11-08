@@ -6,7 +6,7 @@ namespace GameLibrary {
         #region Constants
   
         private const float INIT_HEALTH = 100;
-        private const float INIT_STR = 10;
+        private const float INIT_STR = 5;
         private const float INIT_DEF = 5;
         private const float INIT_LUCK = 2;
         private const float INIT_SPEED = 2;
@@ -47,7 +47,7 @@ namespace GameLibrary {
         public float Mana { get; protected set; }
 
 
-        public string[] Abilities = { "Simple Attack", "Spark", "BIG MOVE" };
+        public string[] Abilities = { "Simple Attack", "Spark", "" };
         // New Stats
         public float Strength { get; protected set; }
         public float Dexterity { get; protected set; }
@@ -119,15 +119,14 @@ namespace GameLibrary {
 
             statPoints += 7;
 
+            
+            Str += LVLINC_STR;
+            Def += LVLINC_DEF;
+            Speed += LVLINC_SPEED;
             /*
             // Dont need increment value assuming statpoint
             // Alloc is still implemented
             // other stats
-            Str += LVLINC_STR;
-            Def += LVLINC_DEF;
-            Luck += LVLINC_LUCK;
-            Speed += LVLINC_SPEED;
-
             // New stats increment
             Strength += LVLINC_STRENGTH;
             Dexterity += LVLINC_DEXTERITY;
@@ -135,33 +134,50 @@ namespace GameLibrary {
             Intelligence += LVLINC_INTELLIGENCE;
             Wisdom += LVLINC_WISDOM;
             Charisma += LVLINC_CHARISMA;
+            Luck += LVLINC_LUCK;
             */
         }
         // Refill Health and Mana
+
         public void RefillHealthAndMana() {
             Health = MaxHealth;
             Mana = MaxMana;
         }
+        //all methods of attack
+        #region Abilities
         public void SimpleAttack(Mortal receiver)
         {
             if (Str <= 0)
             {
                 return;
             }
-            float baseDamage = Math.Abs(5+(Strength * 2.5f - receiver.Def));
+            float baseDamage = Math.Abs(9+(Strength * .9f - receiver.Def));
             float randMax = 1 + SIMPLEATTACK_RANDOM_AMT;
             float randMin = 1 - SIMPLEATTACK_RANDOM_AMT;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
             receiver.Health -= (baseDamage * randMult);
         }
-       
+        public void EnemyAttack(Mortal receiver)
+        {
+            if (Str <= 0)
+            {
+                return;
+            }
+
+            float baseDamage = (float)Math.Abs(2.2*receiver.Level+(Str * 1.9f - receiver.Def));
+            float randMax = 1 + SIMPLEATTACK_RANDOM_AMT;
+            float randMin = 1 - SIMPLEATTACK_RANDOM_AMT;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
+        }
+
         public void Stab(Mortal receiver)
         {
             if (Str <= 0)
             {
                 return;
             }
-            float baseDamage = Math.Abs(7+(Strength * 2.8f - receiver.Def));
+            float baseDamage = Math.Abs(9+(Strength * 1.2f - receiver.Def));
             float randMax = 1 + .4f;
             float randMin = 1 - .4f;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
@@ -173,7 +189,7 @@ namespace GameLibrary {
             {
                 return;
             }
-            float baseDamage = Math.Abs(6 + (Strength * 3.0f - receiver.Def));
+            float baseDamage = Math.Abs((Strength * 1.4f - receiver.Def));
             float randMax = 1 + .5f;
             float randMin = 1 - .4f;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
@@ -185,7 +201,7 @@ namespace GameLibrary {
             {
                 return;
             }
-            float baseDamage = Math.Abs(13+(Strength * 3.2f - receiver.Def));
+            float baseDamage = Math.Abs(4+(Strength * 2.8f - receiver.Def));
             float randMax = 1 + .6f;
             float randMin = 1 - .4f;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
@@ -206,7 +222,7 @@ namespace GameLibrary {
         {
             if(spellCost(20))
             {
-                float baseDamage = (float)Math.Abs((5+Intelligence+(Wisdom*.5))* (rand.NextDouble()+2.3* Level));
+                float baseDamage = (float)Math.Abs((5+((Intelligence+Wisdom)*.2))* (rand.NextDouble()+2.7* Level));
                 receiver.Health -= baseDamage;
             }                     
         }
@@ -216,7 +232,7 @@ namespace GameLibrary {
            
             if(spellCost(10))
             {
-                float baseDamage = (float)Math.Abs((6+Intelligence+(Wisdom * .33)*(rand.NextDouble()+1.6*Level)));
+                float baseDamage = (float)Math.Abs(((6+((Intelligence+Wisdom)*.33)*(rand.NextDouble()+2.8*Level))));
                 receiver.Health -= baseDamage;
             }
         }
@@ -246,7 +262,7 @@ namespace GameLibrary {
         {
             if (spellCost(30))
             {
-                float baseDamage = (float)Math.Abs((7+Intelligence+(Wisdom*.25)) * (rand.NextDouble()*3 + Level));
+                float baseDamage = (float)Math.Abs((6+((Intelligence+Wisdom*.4)) * (rand.NextDouble()*3 + Level)));
                 receiver.Health -= baseDamage;
             }
         }
@@ -280,10 +296,11 @@ namespace GameLibrary {
         {
             receiver.Health -= 1;
         }
-        
+        #endregion
         /// <summary>
         /// Increment Strength Value
         /// </summary>
+        ///
         public void incStrength()
         {
             if(statPoints > 0)
