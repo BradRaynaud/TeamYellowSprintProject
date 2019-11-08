@@ -89,9 +89,10 @@ namespace GenericRPG {
         {
             Character character = Game.GetGame().Character;
             character.incWisdom();
-
             ptstoAlloc.Text = character.statPoints.ToString();
             lblNewWis.Text = ((float)Math.Round(character.Wisdom)).ToString();
+            character.RefillHealthAndMana();
+            lblNewMana.Text = character.Mana.ToString();
         }
 
         private void conAlloc_Click(object sender, EventArgs e)
@@ -101,6 +102,8 @@ namespace GenericRPG {
 
             ptstoAlloc.Text = character.statPoints.ToString();
             lblNewCon.Text = ((float)Math.Round(character.Constitution)).ToString();
+            character.RefillHealthAndMana();
+            lblNewHealth.Text = character.Health.ToString();
         }
 
         private void charAlloc_Click(object sender, EventArgs e)

@@ -53,7 +53,7 @@
             // 
             this.Btn_Menu1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Menu1.Location = new System.Drawing.Point(402, 537);
-            this.Btn_Menu1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Btn_Menu1.Margin = new System.Windows.Forms.Padding(6);
             this.Btn_Menu1.Name = "Btn_Menu1";
             this.Btn_Menu1.Size = new System.Drawing.Size(190, 88);
             this.Btn_Menu1.TabIndex = 1;
@@ -118,7 +118,7 @@
             this.Controls.Add(this.Character1Select);
             this.Controls.Add(this.Btn_Menu1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Frm_CharacterSelect";
             this.Text = "Avatar";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
