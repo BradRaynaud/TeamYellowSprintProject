@@ -205,6 +205,9 @@
   <data name="minecraftgrass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minecraftgrass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="resetti" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\resetti.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AltCharacter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AltCharacter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
