@@ -40,7 +40,7 @@ namespace GameLibrary {
         /// <param name="Clevel">Level of Character</param>
         public int GainXP(float amount, int Elevel, int Clevel) {
             // The *10 is a DEBUG multiplier to test the level functions
-            XP += amount * ((float)Elevel/(float)Clevel);
+            XP += amount * ((float)Elevel/(float)Clevel)*3;
 
             // every 100 experience points you gain a level
             if ((int)XP / 100 >= Level) {

@@ -2,3 +2,8 @@ C:\Users\samue\Documents\GitHub\TeamYellowSprintProject\Implementation\GameLibra
 C:\Users\samue\Documents\GitHub\TeamYellowSprintProject\Implementation\GameLibrary\bin\Debug\GameLibrary.pdb
 C:\Users\samue\Documents\GitHub\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.dll
 C:\Users\samue\Documents\GitHub\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.pdb
+C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\bin\Debug\GameLibrary.dll
+C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\bin\Debug\GameLibrary.pdb
+C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.dll
+C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.pdb
+C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.csprojAssemblyReference.cache
