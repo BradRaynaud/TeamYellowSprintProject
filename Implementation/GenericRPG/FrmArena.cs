@@ -111,7 +111,7 @@ namespace GenericRPG {
             else
             {
                 float prevPlayerHealth = character.Health;
-                enemy.SimpleAttack(character);
+                enemy.EnemyAttack(character);
                 float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
                 lblPlayerDamage.Text = playerDamage.ToString();
                 lblPlayerDamage.Visible = true;
