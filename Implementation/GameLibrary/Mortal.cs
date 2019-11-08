@@ -42,7 +42,7 @@ namespace GameLibrary {
         public string Name { get; protected set; }
         public int Level { get; protected set; }
         public float MaxHealth { get; protected set; }
-        public float Health { get; protected set; }
+        public virtual float Health { get; protected set; }
         public float MaxMana { get; protected set; }
         public float Mana { get; protected set; }
 

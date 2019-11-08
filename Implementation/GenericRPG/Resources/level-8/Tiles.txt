@@ -1,0 +1,5 @@
+﻿0 path blank
+1 wall netherrack
+2 start blank
+3 outportal 5 level-6 netherportal
+B boss 0 3 Bowser

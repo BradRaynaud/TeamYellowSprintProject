@@ -7,84 +7,90 @@ using System.Windows.Forms;
 
 
 namespace GenericRPG {
+    public partial class FrmArena : Form
+    {
+        protected Game game;
+        protected Character character;
+        protected Enemy enemy;
+        protected Random rand;
+        //public string[] Ability;
+        public FrmArena()
+        {
+            InitializeComponent();
+        }
+        private void btnEndFight_Click(object sender, EventArgs e)
+        {
+            EndFight();
+        }
+        protected void EndFight()
+        {
+            if (Game.GetGame().State == GameState.FIGHTING)
+            {
+                Game.GetGame().ChangeState(GameState.ON_MAP);
+            }
+            Game.GetGame().SetEnemy(null);
+            Close();
+        }
+        protected virtual void FrmArena_Load(object sender, EventArgs e)
+        {
+            rand = new Random();
+
+            game = Game.GetGame();
+            character = game.Character;
+            enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
+
+            // stats
+            UpdateStats();
+
+            // pictures
+            picCharacter.BackgroundImage = character.Pic.Image;
+            picEnemy.BackgroundImage = enemy.Img;
+
+            // names
+            lblPlayerName.Text = character.Name;
+            lblEnemyName.Text = enemy.Name;
+        }
     
-    public partial class FrmArena : Form {
-    private Game game;
-    private Character character;
-    private Enemy enemy;
-    private Random rand;
-    //public string[] Ability;
-    public FrmArena() {
-    InitializeComponent();
-    }
-    private void btnEndFight_Click(object sender, EventArgs e) {
-        EndFight();
-    }
-    private void EndFight() {
-        Game.GetGame().ChangeState(GameState.ON_MAP);
-        Close();
-    }
-    private void FrmArena_Load(object sender, EventArgs e) {
-        rand = new Random();
+        /// <summary>
+        /// This function updates the stats on the FrmArena menu
+        /// </summary>
 
-        game = Game.GetGame();
-        character = game.Character;
-        enemy = new Enemy(rand.Next(character.Level + 1), Resources.enemy);
-
-        // stats
-        UpdateStats();
-
-        // pictures
-        picCharacter.BackgroundImage = character.Pic.Image;
-        picEnemy.BackgroundImage = enemy.Img;
-
-        // names
-        lblPlayerName.Text = character.Name;
-        lblEnemyName.Text = enemy.Name;
-    }
-    
-    /// <summary>
-    /// This function updates the stats on the FrmArena menu
-    /// </summary>
-
-    public void UpdateStats() {
-            // Update the Player Level and Health
-    lblPlayerLevel.Text = character.Level.ToString();
-    lblPlayerHealth.Text = Math.Round(character.Health).ToString();
+        public void UpdateStats() {
+                // Update the Player Level and Health
+        lblPlayerLevel.Text = character.Level.ToString();
+        lblPlayerHealth.Text = Math.Round(character.Health).ToString();
         
-    // Update the Player Stats
-    lblPlayerStr.Text = Math.Round(character.Strength).ToString();
-    lblPlayerDex.Text = Math.Round(character.Dexterity).ToString();
-    lblPlayerCon.Text = Math.Round(character.Constitution).ToString();
-    lblPlayerInt.Text = Math.Round(character.Intelligence).ToString();
-    lblPlayerWis.Text = Math.Round(character.Wisdom).ToString();
-    lblPlayerChar.Text = Math.Round(character.Charisma).ToString();
-    lblPlayerLuck.Text = Math.Round(character.Luck).ToString();
+        // Update the Player Stats
+        lblPlayerStr.Text = Math.Round(character.Strength).ToString();
+        lblPlayerDex.Text = Math.Round(character.Dexterity).ToString();
+        lblPlayerCon.Text = Math.Round(character.Constitution).ToString();
+        lblPlayerInt.Text = Math.Round(character.Intelligence).ToString();
+        lblPlayerWis.Text = Math.Round(character.Wisdom).ToString();
+        lblPlayerChar.Text = Math.Round(character.Charisma).ToString();
+        lblPlayerLuck.Text = Math.Round(character.Luck).ToString();
 
-    // Update Player Mana and XP
-    lblPlayerMana.Text = Math.Round(character.Mana).ToString();
-    lblPlayerXp.Text = Math.Round(character.XP).ToString();
+        // Update Player Mana and XP
+        lblPlayerMana.Text = Math.Round(character.Mana).ToString();
+        lblPlayerXp.Text = Math.Round(character.XP).ToString();
         
-    // Update Enemy level, health, and stats
-    lblEnemyLevel.Text = enemy.Level.ToString();
-    lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
-    lblEnemyStr.Text = Math.Round(enemy.Str).ToString();
-    lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
-    lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
+        // Update Enemy level, health, and stats
+        lblEnemyLevel.Text = enemy.Level.ToString();
+        lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
+        lblEnemyStr.Text = Math.Round(enemy.Str).ToString();
+        lblEnemyDef.Text = Math.Round(enemy.Def).ToString();
+        lblEnemyMana.Text = Math.Round(enemy.Mana).ToString();
 
-    // Duplicated code that reupdates the player and enemy health
-    // This should do nothing but I didnt remove it just in case
-    //lblPlayerHealth.Text = Math.Round(character.Health).ToString();
-    //lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
-    }
+        // Duplicated code that reupdates the player and enemy health
+        // This should do nothing but I didnt remove it just in case
+        //lblPlayerHealth.Text = Math.Round(character.Health).ToString();
+        //lblEnemyHealth.Text = Math.Round(enemy.Health).ToString();
+        }
+
         public void updateAbilities()
         {
         }
-   
-    //function to encapsulate the process of combat
-    //called after an ability is used/processed
-        private void combatStuff()
-    {
+        protected virtual void combatStuff()
+        {
             if (enemy.Health <= 0)
             {
                 character.GainXP(enemy.XpDropped,enemy.Level,character.Level);
@@ -231,7 +237,7 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
-        private void btnMeteor_Click(object sender, EventArgs e)
+    private void btnMeteor_Click(object sender, EventArgs e)
     {
         float prevEnemyHealth = enemy.Health;
         character.Meteor(enemy);
