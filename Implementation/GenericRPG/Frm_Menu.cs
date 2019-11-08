@@ -6,13 +6,10 @@ namespace GenericRPG
 {
     public partial class Frm_Menu : Form
     {
-        Frm_credits creditScreen;
-        Frm_CharacterSelect charSelect;
-
+        
         public Frm_Menu()
         {
-            creditScreen = new Frm_credits();
-            charSelect = new Frm_CharacterSelect();
+            
             InitializeComponent();
             
         }
@@ -40,12 +37,14 @@ namespace GenericRPG
 
         private void Btn_credits_Click(object sender, EventArgs e)
         {
-            
+            Frm_credits creditScreen = new Frm_credits();
             creditScreen.Show();
         }
 
         private void btnCharSelect_Click(object sender, EventArgs e)
         {
+
+            Frm_CharacterSelect charSelect = new Frm_CharacterSelect();
             charSelect.Show();
         }
     }
