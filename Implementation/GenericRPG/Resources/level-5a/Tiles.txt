@@ -7,7 +7,7 @@
 f path pokemonflowers
 w wall pokemonwall
 r wall pokemonroof
-s enemy 0 5 sudowudo
+s enemy 0 2 sudowudo
 a outportal a level-5b pokemondoor
 b outportal b level-5b pokemondoor
 c outportal c level-5b pokemondoor

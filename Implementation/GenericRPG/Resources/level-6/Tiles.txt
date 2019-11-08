@@ -3,4 +3,4 @@
 2 start animalcrossinggrass
 3 outportal 5 level-5a animalcrossinghole
 5 outportal 3 level-8 animalcrossinghole
-4 enemy 5 7 resetti
+4 enemy 5 3 resetti
