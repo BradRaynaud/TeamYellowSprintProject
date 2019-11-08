@@ -66,7 +66,7 @@ namespace GameLibrary {
             grpBox.Left = 5;
 
             // initialize for game
-            encounterChance = 0.15;
+            encounterChance = 0.001;
             rand = new Random();
             Game.GetGame().ChangeState(GameState.ON_MAP);
 
@@ -80,10 +80,10 @@ namespace GameLibrary {
             };
 
             Position p = new Position(map.CharacterStartRow, map.CharacterStartCol);
-            Position pPB = RowColToTopLeft(p);
+            Position topleft = RowColToTopLeft(p);
 
-            pb.Top = pPB.row;
-            pb.Left = pPB.col;
+            pb.Top = topleft.row;
+            pb.Left = topleft.col;
             grpBox.Controls.Add(pb);
             pb.BringToFront();
 
@@ -150,6 +150,9 @@ namespace GameLibrary {
                     case "outportal":
                         t = new OutportalTile(words[2][0], words[3], words[4]);
                         break;
+                    case "enemy":
+                        t = new EnemyTile(words[2][0], Convert.ToInt32(words[3]), words[4]);
+                        break;
                     default:
                         t = new WallTile("blank");
                         break;
@@ -205,6 +208,11 @@ namespace GameLibrary {
 
         public Position? Enter(Position pos)
         {
+            if (Game.GetGame().State == GameState.FIGHTING || Game.GetGame().State == GameState.DEAD)
+            {
+                return null;
+            }
+
             // if the position is outside of the map, return null
             if (pos.row < 0 || pos.row >= NumRows ||
                 pos.col < 0 || pos.col >= NumCols) {
@@ -221,11 +229,12 @@ namespace GameLibrary {
 
             // otherwise see if the character should get a random encounter
             if (rand.NextDouble() < encounterChance) {
-                encounterChance = 0.15;
+                encounterChance = 0.0001;
+                Game.GetGame().SetEnemy(new Enemy(rand.Next(character.Level + 1), loadImg("enemy")));
                 Game.GetGame().ChangeState(GameState.FIGHTING);
             }
             else {
-                encounterChance += 0.10;
+                encounterChance += 0.01;
             }
 
             // return the new position
@@ -268,6 +277,7 @@ namespace GameLibrary {
         /// </summary>
         private abstract class Tile {
             public string ImageFile { get; private set;  }
+            public bool SwitchCondition { get; private set; } = false;
             
             public Tile(string imageFile) {
                 ImageFile = imageFile;
@@ -280,7 +290,7 @@ namespace GameLibrary {
             /// </summary>
             /// <param name="LoadImg"></param>
             /// <returns></returns>
-            public PictureBox MakePictureBox(Func<string, Bitmap> LoadImg) {
+            public virtual PictureBox MakePictureBox(Func<string, Bitmap> LoadImg) {
                 if (ImageFile == "blank") return null; // if the imagefile is the keyword blank, return null
                 // otherwise make a picture box
                 else return new PictureBox() {
@@ -294,7 +304,7 @@ namespace GameLibrary {
 
         private class PathTile : Tile {
             public PathTile(string imageFile) : base(imageFile) { }
-
+            
             public override Position? Enter(Position pos) {
                 // let the character step into the tile
                 return pos;
@@ -309,8 +319,7 @@ namespace GameLibrary {
             }
         }
 
-        private class InportalTile : Tile
-        {
+        private class InportalTile : Tile {
             private char destination;
 
             public InportalTile(char destination, string imageFile) : base(imageFile) {
@@ -324,8 +333,7 @@ namespace GameLibrary {
             }
         }
 
-        private class OutportalTile : Tile
-        {
+        private class OutportalTile : Tile {
             private char destination;
             private string level;
 
@@ -338,6 +346,42 @@ namespace GameLibrary {
                 // switch to the right level then send the character to the position of the destination of the portal
                 ChangeMap(level);
                 return CurrentMap.PositionOfCharacter(destination);
+            }
+        }
+
+        private class EnemyTile : Tile {
+            private char tileBelow;
+            private Boolean defeated = false;
+            private PictureBox pb;
+            private int level;
+
+            public EnemyTile(char tileBelow, int level, string imageFile) : base(imageFile) {
+                this.tileBelow = tileBelow;
+                this.level = level;
+            }
+
+            public override Position? Enter(Position pos) {
+                if (defeated) {
+                    return CurrentMap.tileDict[tileBelow].Enter(pos);
+                }
+                else {
+                    Game.GetGame().ChangeState(GameState.FIGHTING);
+                    Enemy enemy = new Enemy(level, loadImg(ImageFile));
+                    Game.GetGame().SetEnemy(enemy);
+                    if (enemy.Health <= 0) {
+                        defeated = true;
+                        pb.Image = null;
+                    }
+                    return null;
+                }
+            }
+
+            public override PictureBox MakePictureBox(Func<string, Bitmap> LoadImg)
+            {
+                pb = CurrentMap.tileDict[tileBelow].MakePictureBox(LoadImg);
+                pb.Image = LoadImg(ImageFile);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                return pb;
             }
         }
     }

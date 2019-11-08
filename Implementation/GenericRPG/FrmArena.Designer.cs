@@ -629,25 +629,31 @@ namespace GenericRPG {
             this.btnSimpleAttack.Name = "btnSimpleAttack";
             this.btnSimpleAttack.Size = new System.Drawing.Size(86, 46);
             this.btnSimpleAttack.TabIndex = 13;
-            this.btnSimpleAttack.Text = character.Abilities[0];
+            this.btnSimpleAttack.Text = "Simple Attack";
             this.btnSimpleAttack.UseVisualStyleBackColor = false;
-            this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
-            
             if (character.Abilities[0] == "Simple Attack")
             {
                 this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
+                this.btnSimpleAttack.Text = character.Abilities[0];
             }
             if (character.Abilities[0] == "Slash")
             {
                 this.btnSimpleAttack.Click += new System.EventHandler(this.btnSlash_Click);
+                this.btnSimpleAttack.Text = character.Abilities[0];
             }
             if (character.Abilities[0] == "Stab")
             {
                 this.btnSimpleAttack.Click += new System.EventHandler(this.btnStab_Click);
+                this.btnSimpleAttack.Text = character.Abilities[0];
             }
             if (character.Abilities[0] == "Big Stab")
             {
                 this.btnSimpleAttack.Click += new System.EventHandler(this.btnBigStab_Click);
+                this.btnSimpleAttack.Text = character.Abilities[0];
+            }
+            if(character.Abilities[0]== "")
+            {
+                this.btnSimpleAttack.Click += new System.EventHandler(this.btnSimpleAttack_Click);
             }
 
             // 
@@ -659,23 +665,36 @@ namespace GenericRPG {
             this.btnWeakenAttack.Name = "btnWeakenAttack";
             this.btnWeakenAttack.Size = new System.Drawing.Size(86, 46);
             this.btnWeakenAttack.TabIndex = 14;
-            this.btnWeakenAttack.Text = character.Abilities[1];
+            this.btnWeakenAttack.Text = "Spark";
             this.btnWeakenAttack.UseVisualStyleBackColor = false;
+            if (character.Abilities[1] == "Spark")
+            {
+                this.btnWeakenAttack.Click += new System.EventHandler(this.btnSpark_Click);
+                this.btnWeakenAttack.Text = character.Abilities[1];
+            }
             if (character.Abilities[1] == "Weaken")
             {
                 this.btnWeakenAttack.Click += new System.EventHandler(this.btnWeakenAttack_Click);
+                this.btnWeakenAttack.Text = character.Abilities[1];
             }
             if (character.Abilities[1] == "Heal")
             {
                 this.btnWeakenAttack.Click += new System.EventHandler(this.btnHeal_Click);
+                this.btnWeakenAttack.Text = character.Abilities[1];
             }
             if (character.Abilities[1] == "Fireball")
             {
                 this.btnWeakenAttack.Click += new System.EventHandler(this.btnFireball_Click);
+                this.btnWeakenAttack.Text = character.Abilities[1];
             }
             if (character.Abilities[1] == "Ice Blast")
             {
                 this.btnWeakenAttack.Click += new System.EventHandler(this.btnIceBlast_Click);
+                this.btnWeakenAttack.Text = character.Abilities[1];
+            }
+            if(character.Abilities[1]=="")
+            {
+                this.btnWeakenAttack.Click += new System.EventHandler(this.btnSpark_Click);
             }
 
             // 
@@ -687,23 +706,32 @@ namespace GenericRPG {
             this.Attack2.Name = "Attack2";
             this.Attack2.Size = new System.Drawing.Size(86, 43);
             this.Attack2.TabIndex = 17;
-            this.Attack2.Text = character.Abilities[2];
+            this.Attack2.Text = "???";
             this.Attack2.UseVisualStyleBackColor = false;
             if (character.Abilities[2] == "BIG MOVE")
             {
                 this.Attack2.Click += new System.EventHandler(this.btnAttack2_Click);
+                this.Attack2.Text = character.Abilities[2];
+            }
+            if (character.Abilities[2] == "Pocket Sand")
+            {
+                this.Attack2.Click += new System.EventHandler(this.btnPocketSand_Click);
+                this.Attack2.Text = character.Abilities[2];
             }
             if (character.Abilities[2] == "Meteor")
             {
                 this.Attack2.Click += new System.EventHandler(this.btnMeteor_Click);
+                this.Attack2.Text = character.Abilities[2];
             }
             if (character.Abilities[2] == "Blood Magic")
             {
                 this.Attack2.Click += new System.EventHandler(this.btnBloodMagic_Click);
+                this.Attack2.Text = character.Abilities[2];
             }
-            if (character.Abilities[2] == "Execution")
+            if (character.Abilities[2] == "Mercy")
             {
                 this.Attack2.Click += new System.EventHandler(this.btnMercy_Click);
+                this.Attack2.Text = character.Abilities[2];
             }
             // 
             // btnRun

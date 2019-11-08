@@ -34,8 +34,8 @@ namespace GenericRPG {
         // stats
         UpdateStats();
 
-            // pictures
-        picCharacter.BackgroundImage = Resources.character;
+        // pictures
+        picCharacter.BackgroundImage = character.Pic.Image;
         picEnemy.BackgroundImage = enemy.Img;
 
         // names
@@ -48,7 +48,7 @@ namespace GenericRPG {
     /// </summary>
 
     public void UpdateStats() {
-    // Update the Player Level and Health
+            // Update the Player Level and Health
     lblPlayerLevel.Text = character.Level.ToString();
     lblPlayerHealth.Text = Math.Round(character.Health).ToString();
         
@@ -155,6 +155,16 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
+    private void btnSpark_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.Spark(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+        }
     private void btnWeakenAttack_Click(object sender, EventArgs e)
     {
         float prevEnemyHealth = enemy.Health;
@@ -201,26 +211,26 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
-        private void btnBigStab_Click(object sender, EventArgs e)
-        {
-            float prevEnemyHealth = enemy.Health;
-            character.BigStab(enemy);
-            float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
-            lblEnemyDamage.Text = enemyDamage.ToString();
-            lblEnemyDamage.Visible = true;
-            tmrEnemyDamage.Enabled = true;
-            combatStuff();
-        }
-        private void btnIceBlast_Click(object sender, EventArgs e)
-        {
-            float prevEnemyHealth = enemy.Health;
-            character.IceBlast(enemy);
-            float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
-            lblEnemyDamage.Text = enemyDamage.ToString();
-            lblEnemyDamage.Visible = true;
-            tmrEnemyDamage.Enabled = true;
-            combatStuff();
-        }
+    private void btnBigStab_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.BigStab(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+    private void btnIceBlast_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.IceBlast(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
         private void btnMeteor_Click(object sender, EventArgs e)
     {
         float prevEnemyHealth = enemy.Health;
@@ -251,6 +261,19 @@ namespace GenericRPG {
         tmrEnemyDamage.Enabled = true;
         combatStuff();
     }
+    private void btnPocketSand_Click(object sender, EventArgs e)
+    {
+        float prevEnemyHealth = enemy.Health;
+        character.PocketSand(enemy);
+        float enemyDamage = (float)Math.Round(prevEnemyHealth - enemy.Health);
+        lblEndFightMessage.Text = "Useless";
+        lblEndFightMessage.Visible = true;
+        lblEnemyDamage.Text = enemyDamage.ToString();
+        lblEnemyDamage.Visible = true;
+        tmrEnemyDamage.Enabled = true;
+        combatStuff();
+    }
+
 
 
         /// <summary>
@@ -259,12 +282,16 @@ namespace GenericRPG {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnRun_Click(object sender, EventArgs e) {
-        if (rand.NextDouble() < 0.25) {
-        lblEndFightMessage.Text = "You Ran Like a Coward!";
-        lblEndFightMessage.Visible = true;
-        Refresh();
-        Thread.Sleep(1200);
-        EndFight();
+        double run;
+        run = ((character.Charisma + character.Luck) * .09 + rand.NextDouble());
+        //Console.WriteLine(run);
+        if (run > .95)
+        { 
+            lblEndFightMessage.Text = "You Ran Like a Coward!";
+            lblEndFightMessage.Visible = true;
+            Refresh();
+            Thread.Sleep(1200);
+            EndFight();
         }
         else {
         combatStuff();

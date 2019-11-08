@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 
+
 namespace GenericRPG
 {
     public partial class Frm_Menu : Form
     {
+        Frm_credits creditScreen;
+        Frm_CharacterSelect charSelect;
+
         public Frm_Menu()
         {
+            creditScreen = new Frm_credits();
+            charSelect = new Frm_CharacterSelect();
             InitializeComponent();
             
         }
@@ -30,6 +36,17 @@ namespace GenericRPG
         {
             FrmMap newgame = new FrmMap("level-1");
             newgame.Show();
+        }
+
+        private void Btn_credits_Click(object sender, EventArgs e)
+        {
+            
+            creditScreen.Show();
+        }
+
+        private void btnCharSelect_Click(object sender, EventArgs e)
+        {
+            charSelect.Show();
         }
     }
 }

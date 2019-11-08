@@ -20,7 +20,7 @@ namespace GenericRPG {
         private void FrmMap_Load(object sender, EventArgs e) {
             game = Game.GetGame();
 
-            character = Map.InitializeMaps(MapFolder, "character", grpMap,
+            character = Map.InitializeMaps(MapFolder, Frm_CharacterSelect.charFile, grpMap,
               str => Resources.ResourceManager.GetObject(str) as Bitmap
             );
 

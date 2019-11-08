@@ -24,6 +24,7 @@ namespace GenericRPG {
     private void btnPlayAgain_Click(object sender, EventArgs e) {
       Game game = Game.GetGame();
       game.Character.ResetStats();
+      Map.ChangeMap("level-1");
       game.Character.BackToStart();
       game.ChangeState(GameState.ON_MAP);
       Close();

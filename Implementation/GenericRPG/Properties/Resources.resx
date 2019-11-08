@@ -121,9 +121,6 @@
   <data name="character_levelup_animation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\character-levelup-animation.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="character1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\character.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="quitgame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\quitgame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,8 +160,8 @@
   <data name="pokemonflowers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pokemonflowers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="abilityselectbackround" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\abilityselectbackround.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="character1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\character.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pokemondoor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pokemondoor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,6 +174,9 @@
   </data>
   <data name="gameover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gameover.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="abilityselectbackround" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\abilityselectbackround.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mariowall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mariowall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,6 +193,9 @@
   <data name="character" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\character.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MenuPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuPicture.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pokemonbush" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pokemonbush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,7 +205,10 @@
   <data name="minecraftgrass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minecraftgrass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MenuPicture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuPicture.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="resetti" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\resetti.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AltCharacter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AltCharacter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

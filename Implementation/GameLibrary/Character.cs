@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace GameLibrary {
     public struct Position {
@@ -25,7 +26,7 @@ namespace GameLibrary {
         public float XP { get; private set; }
         public bool ShouldLevelUp { get; private set; }
 
-        public Character(PictureBox pb, Position pos) : base("Player 1", 1) {
+        public Character(PictureBox pb, Position pos) : base(Interaction.InputBox("Default Username is Player 1", "Please Enter Name!", "Player 1"), 1) {
             Pic = pb;
             this.pos = pos;
             ShouldLevelUp = false;
@@ -62,6 +63,7 @@ namespace GameLibrary {
             Position topleft = Map.RowColToTopLeft(pos);
             Pic.Left = topleft.col;
             Pic.Top = topleft.row;
+            Pic.BackgroundImage = Map.CurrentMap.GetBackgroundImage(pos);
         }
     
         /// <summary>
