@@ -66,7 +66,7 @@ namespace GameLibrary {
             grpBox.Left = 5;
 
             // initialize for game
-            encounterChance = 0.15;
+            encounterChance = 0.001;
             rand = new Random();
             Game.GetGame().ChangeState(GameState.ON_MAP);
 
@@ -229,12 +229,12 @@ namespace GameLibrary {
 
             // otherwise see if the character should get a random encounter
             if (rand.NextDouble() < encounterChance) {
-                encounterChance = 0.15;
+                encounterChance = 0.0001;
                 Game.GetGame().SetEnemy(new Enemy(rand.Next(character.Level + 1), loadImg("enemy")));
                 Game.GetGame().ChangeState(GameState.FIGHTING);
             }
             else {
-                encounterChance += 0.10;
+                encounterChance += 0.01;
             }
 
             // return the new position
