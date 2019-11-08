@@ -19,7 +19,7 @@ namespace GameLibrary {
 
         private static readonly Random rand = new Random();
         private static readonly List<string> names = new List<string>() {
-            "Wily", "Bob", "Dr. Light", "WallCrusher"
+            "Wily", "Bob", "Dr. Light", "WallCrusher", "Big Chungus"
         };
         private static readonly List<string> Titles = new List<string>() {
             "Mighty", "Hidden", "Sneaky", "Quick", "Mild", "Boring", "Tiny", "Huge", "Useless", "Exploding" 
@@ -63,6 +63,7 @@ namespace GameLibrary {
             Def /= (float)rand.NextDouble() * (WEAKEN_MAX - WEAKEN_MIN) + WEAKEN_MIN;
 
             // Modify the stats according to title
+            
             Health = Health * HealthTitleMod;
             Mana = Mana * ManaTitleMod;
             Str = Str * StrTitleMod;

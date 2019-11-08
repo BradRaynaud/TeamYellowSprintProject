@@ -47,7 +47,7 @@ namespace GameLibrary {
         public float Mana { get; protected set; }
 
 
-        public string[] Abilities = { "Simple Attack", "Weaken", "BIG MOVE" };
+        public string[] Abilities = { "Simple Attack", "Spark", "BIG MOVE" };
         // New Stats
         public float Strength { get; protected set; }
         public float Dexterity { get; protected set; }
@@ -148,9 +148,22 @@ namespace GameLibrary {
             {
                 return;
             }
-            float baseDamage = Math.Abs(Str * 1.8f - receiver.Def);
+            float baseDamage = Math.Abs(5+(Strength * 2.5f - receiver.Def));
             float randMax = 1 + SIMPLEATTACK_RANDOM_AMT;
             float randMin = 1 - SIMPLEATTACK_RANDOM_AMT;
+            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
+            receiver.Health -= (baseDamage * randMult);
+        }
+       
+        public void Stab(Mortal receiver)
+        {
+            if (Str <= 0)
+            {
+                return;
+            }
+            float baseDamage = Math.Abs(7+(Strength * 2.8f - receiver.Def));
+            float randMax = 1 + .4f;
+            float randMin = 1 - .4f;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
             receiver.Health -= (baseDamage * randMult);
         }
@@ -160,20 +173,8 @@ namespace GameLibrary {
             {
                 return;
             }
-            float baseDamage = Math.Abs(Str * 2.2f - receiver.Def);
+            float baseDamage = Math.Abs(6 + (Strength * 3.0f - receiver.Def));
             float randMax = 1 + .5f;
-            float randMin = 1 - .5f;
-            float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
-            receiver.Health -= (baseDamage * randMult);
-        }
-        public void Stab(Mortal receiver)
-        {
-            if (Str <= 0)
-            {
-                return;
-            }
-            float baseDamage = Math.Abs(Str * 2.4f - receiver.Def);
-            float randMax = 1 + .4f;
             float randMin = 1 - .4f;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
             receiver.Health -= (baseDamage * randMult);
@@ -184,14 +185,15 @@ namespace GameLibrary {
             {
                 return;
             }
-            float baseDamage = Math.Abs(Str * 2.8f - receiver.Def);
-            float randMax = 1 + .5f;
+            float baseDamage = Math.Abs(13+(Strength * 3.2f - receiver.Def));
+            float randMax = 1 + .6f;
             float randMin = 1 - .4f;
             float randMult = (float)(rand.NextDouble() * (randMax - randMin)) + randMin;
             receiver.Health -= (baseDamage * randMult);
         }
         public void Mercy(Mortal receiver)
         {
+            Mana = 0;
             receiver.Health = 1;
         }
         public void Attack2(Mortal receiver)
@@ -202,24 +204,34 @@ namespace GameLibrary {
         
         public void Fireball(Mortal receiver)
         {
-            if(spellCost(30)==true)
+            if(spellCost(20))
             {
-                float baseDamage = (float)Math.Abs(Intelligence * (2 + Level));
+                float baseDamage = (float)Math.Abs((5+Intelligence+(Wisdom*.5))* (rand.NextDouble()+2.3* Level));
                 receiver.Health -= baseDamage;
             }                     
         }
+        public void Spark(Mortal receiver)
+        {
+            
+           
+            if(spellCost(10))
+            {
+                float baseDamage = (float)Math.Abs((6+Intelligence+(Wisdom * .33)*(rand.NextDouble()+1.6*Level)));
+                receiver.Health -= baseDamage;
+            }
+        }
         public void Heal(Mortal character)
         {
-            if(spellCost(10)==true)
+            if(spellCost(25))
             {
-                character.Health += 15;
+                character.Health = (float)Math.Abs(character.Intelligence *((rand.NextDouble()+.6) *Level));
             }
         }
         public void Meteor(Mortal receiver)
         {
-            if (spellCost(40) == true)
+            if (spellCost(50))
             {
-                receiver.Health -= 50;
+                receiver.Health -= (float)Math.Abs(30 * (Level*.2));
             }
         }
         public void BloodMagic(Mortal character, Mortal receiver)
@@ -227,23 +239,23 @@ namespace GameLibrary {
               if(character.Health-50 >=0)
             {
                 character.Health -= 50;
-                receiver.Health -= 65;
+                receiver.Health -= (float)Math.Abs(40 * (Level*.4));
             }
         }
         public void IceBlast(Mortal receiver)
         {
-            if (spellCost(35) == true)
+            if (spellCost(30))
             {
-                float baseDamage = (float)Math.Abs(Intelligence * (3 + Level));
+                float baseDamage = (float)Math.Abs((7+Intelligence+(Wisdom*.25)) * (rand.NextDouble()*3 + Level));
                 receiver.Health -= baseDamage;
             }
         }
-       
         public bool spellCost(float x)
         {
             if(Mana-x>=0)
             {
                 Mana -= x;
+             
                 return true;
             }
             else
@@ -252,19 +264,21 @@ namespace GameLibrary {
             }
 
         }
-     
         public void WeakenAttack(Mortal receiver)
         {
             if (receiver.Str < 0 )
             {
                 return;
             }
-            if(spellCost(10) == true)
+            if(spellCost(15))
             {
                 receiver.Str -= 1;
             }
-            
-            
+             
+        }
+        public void PocketSand(Mortal receiver)
+        {
+            receiver.Health -= 1;
         }
         
         /// <summary>
@@ -309,6 +323,7 @@ namespace GameLibrary {
             if (statPoints > 0)
             {
                 Wisdom += 1;
+                MaxMana += 5;
                 statPoints -= 1;
             }
         }
@@ -321,6 +336,7 @@ namespace GameLibrary {
             if (statPoints > 0)
             {
                 Constitution += 1;
+                MaxHealth+= 5;
                 statPoints -= 1;
             }
         }
@@ -350,12 +366,28 @@ namespace GameLibrary {
 
     public void regenerateHealth() {
         float regenHealth = MaxHealth * 0.1F;
-        Health += regenHealth;
+        if(Health+regenHealth<= MaxHealth)
+        {
+            Health += regenHealth;
+        }
+        else
+        {
+            Health = MaxHealth; 
+        }
+            
     }
 
     public void regenerateMana() {
         float regenMana = MaxMana * 0.1F;
-        Mana += regenMana;
+        if (Mana+ regenMana <= MaxMana)
+        {
+                Mana += regenMana;
+        }
+        else
+        {
+            Mana= MaxMana;
+        }
+      
 
     }
 

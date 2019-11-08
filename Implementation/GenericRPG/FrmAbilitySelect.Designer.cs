@@ -102,6 +102,7 @@ namespace GenericRPG
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
+            "Spark",
             "Weaken"});
             this.comboBox2.Location = new System.Drawing.Point(20, 100);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
@@ -180,9 +181,9 @@ namespace GenericRPG
             this.label3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label3.Location = new System.Drawing.Point(15, 320);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(276, 20);
+            this.label3.Size = new System.Drawing.Size(368, 20);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Magic Abilities scale off of Intelligence";
+            this.label3.Text = "Magic Abilities scale off of Intelligence and Wisdom";
             // 
             // label4
             // 
