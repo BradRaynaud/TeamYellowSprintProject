@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBossArena.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Frm_CharacterSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +176,8 @@
     <None Include="Resources\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\win.jpg" />
+    <None Include="Resources\sudowudo.png" />
     <None Include="Resources\resetti.png" />
     <None Include="Resources\pokemonhole.png" />
     <None Include="Resources\pokemongrass.png" />
@@ -188,9 +193,13 @@
     <None Include="Resources\animalcrossingrock.png" />
     <None Include="Resources\animalcrossinghole.png" />
     <None Include="Resources\AltCharacter.png" />
+    <None Include="Resources\Bowser.png" />
     <Content Include="Resources\cobblestone.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\fireball.jpg" />
+    <None Include="Resources\fireball.png" />
+    <None Include="Resources\fireBowser.png" />
     <Content Include="Resources\Level Template\Map.txt" />
     <Content Include="Resources\Level Template\Tiles.txt" />
     <Content Include="Resources\level-2\Map.txt">
@@ -241,6 +250,18 @@
     <Content Include="Resources\level-6\Tiles.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\level-7\Map.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\level-7\Tiles.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\level-8\Map.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\level-8\Tiles.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\levelup.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -252,6 +273,7 @@
     <Content Include="Resources\netherportal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\netherrack.jpg" />
     <Content Include="Resources\obsidian.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

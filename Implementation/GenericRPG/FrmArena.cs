@@ -9,10 +9,10 @@ using System.Windows.Forms;
 namespace GenericRPG {
     public partial class FrmArena : Form
     {
-        private Game game;
-        private Character character;
-        private Enemy enemy;
-        private Random rand;
+        protected Game game;
+        protected Character character;
+        protected Enemy enemy;
+        protected Random rand;
         //public string[] Ability;
         public FrmArena()
         {
@@ -22,7 +22,7 @@ namespace GenericRPG {
         {
             EndFight();
         }
-        private void EndFight()
+        protected void EndFight()
         {
             if (Game.GetGame().State == GameState.FIGHTING)
             {
@@ -31,7 +31,7 @@ namespace GenericRPG {
             Game.GetGame().SetEnemy(null);
             Close();
         }
-        private void FrmArena_Load(object sender, EventArgs e)
+        protected virtual void FrmArena_Load(object sender, EventArgs e)
         {
             rand = new Random();
 
@@ -92,7 +92,7 @@ namespace GenericRPG {
 
         //function to encapsulate the process of combat
         //called after an ability is used/processed
-        private void combatStuff()
+        protected virtual void combatStuff()
         {
             if (enemy.Health <= 0)
             {

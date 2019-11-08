@@ -1,0 +1,10 @@
+﻿0 path pokemongrass
+1 wall pokemonbush
+2 start pokemongrass
+f path pokemonflowers
+r wall blank
+m wall blank
+l wall blank
+3 outportal 5 level-6 pokemonhole
+4 outportal 3 level-8 pokemonhole
+s enemy 0 15 sudowudo

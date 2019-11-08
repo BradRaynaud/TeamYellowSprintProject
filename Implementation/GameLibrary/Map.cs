@@ -66,7 +66,7 @@ namespace GameLibrary {
             grpBox.Left = 5;
 
             // initialize for game
-            encounterChance = 0.15;
+            encounterChance = 0.10;
             rand = new Random();
             Game.GetGame().ChangeState(GameState.ON_MAP);
 
@@ -153,6 +153,9 @@ namespace GameLibrary {
                     case "enemy":
                         t = new EnemyTile(words[2][0], Convert.ToInt32(words[3]), words[4]);
                         break;
+                    case "boss":
+                        t = new BossTile(words[2][0], Convert.ToInt32(words[3]), words[4]);
+                        break;
                     default:
                         t = new WallTile("blank");
                         break;
@@ -229,12 +232,12 @@ namespace GameLibrary {
 
             // otherwise see if the character should get a random encounter
             if (rand.NextDouble() < encounterChance) {
-                encounterChance = 0.15;
+                encounterChance = 0.10;
                 Game.GetGame().SetEnemy(new Enemy(rand.Next(character.Level + 1), loadImg("enemy")));
                 Game.GetGame().ChangeState(GameState.FIGHTING);
             }
             else {
-                encounterChance += 0.10;
+                encounterChance += 0.05;
             }
 
             // return the new position
@@ -291,8 +294,10 @@ namespace GameLibrary {
             /// <param name="LoadImg"></param>
             /// <returns></returns>
             public virtual PictureBox MakePictureBox(Func<string, Bitmap> LoadImg) {
-                if (ImageFile == "blank") return null; // if the imagefile is the keyword blank, return null
-                // otherwise make a picture box
+                if (ImageFile == "blank") return new PictureBox() {
+                    Width = BLOCK_SIZE,
+                    Height = BLOCK_SIZE
+                };
                 else return new PictureBox() {
                     BackgroundImage = LoadImg(ImageFile),
                     BackgroundImageLayout = ImageLayout.Stretch,
@@ -350,12 +355,14 @@ namespace GameLibrary {
         }
 
         private class EnemyTile : Tile {
-            private char tileBelow;
-            private Boolean defeated = false;
-            private PictureBox pb;
-            private int level;
+            protected char tileBelow;
+            protected Boolean defeated = false;
+            protected string enemyImage;
+            protected PictureBox pb;
+            protected int level;
 
-            public EnemyTile(char tileBelow, int level, string imageFile) : base(imageFile) {
+            public EnemyTile(char tileBelow, int level, string imageFile) : base(CurrentMap.tileDict[tileBelow].ImageFile) {
+                this.enemyImage = imageFile;
                 this.tileBelow = tileBelow;
                 this.level = level;
             }
@@ -366,22 +373,33 @@ namespace GameLibrary {
                 }
                 else {
                     Game.GetGame().ChangeState(GameState.FIGHTING);
-                    Enemy enemy = new Enemy(level, loadImg(ImageFile));
+                    Enemy enemy = new MapEnemy(this.callOnDeath, level, loadImg(enemyImage));
                     Game.GetGame().SetEnemy(enemy);
-                    if (enemy.Health <= 0) {
-                        defeated = true;
-                        pb.Image = null;
-                    }
                     return null;
                 }
+            }
+
+            public void callOnDeath(Enemy e) {
+                defeated = true;
+                pb.Image = null;
             }
 
             public override PictureBox MakePictureBox(Func<string, Bitmap> LoadImg)
             {
                 pb = CurrentMap.tileDict[tileBelow].MakePictureBox(LoadImg);
-                pb.Image = LoadImg(ImageFile);
+                pb.Image = LoadImg(enemyImage);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 return pb;
+            }
+        }
+
+        private class BossTile : EnemyTile {
+            public BossTile(char tileBelow, int level, string imageFile) : base(tileBelow, level, imageFile) { }
+
+            public override Position? Enter(Position pos) {
+                Game.GetGame().SetEnemy(new Enemy(level, loadImg(enemyImage)));
+                Game.GetGame().ChangeState(GameState.BOSS_FIGHT);
+                return null;
             }
         }
     }

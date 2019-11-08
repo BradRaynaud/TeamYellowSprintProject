@@ -8,7 +8,6 @@ using System.Windows.Forms;
 namespace GenericRPG {
     public partial class FrmMap : Form {
         private Character character;
-        private Map map;
         private Game game;
         private string MapFolder;
 
@@ -51,6 +50,10 @@ namespace GenericRPG {
                 character.Move(dir);
                 if (game.State == GameState.FIGHTING) {
                     FrmArena frmArena = new FrmArena();
+                    frmArena.Show();
+                }
+                if (game.State == GameState.BOSS_FIGHT) {
+                    FrmArena frmArena = new FrmBossArena();
                     frmArena.Show();
                 }
             }

@@ -5,7 +5,7 @@ namespace GenericRPG {
     /// <summary>
     /// Required designer variable.
     /// </summary>
-    private System.ComponentModel.IContainer components = null;
+    protected System.ComponentModel.IContainer components = null;
 
     /// <summary>
     /// Clean up any resources being used.
@@ -24,7 +24,7 @@ namespace GenericRPG {
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        protected void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.lblPlayerHealth = new System.Windows.Forms.Label();
             this.picCharacter = new System.Windows.Forms.PictureBox();
@@ -722,53 +722,53 @@ namespace GenericRPG {
     }
     
     #endregion
-    private System.Windows.Forms.Label lblPlayerHealth;
-    private System.Windows.Forms.PictureBox picCharacter;
-    private System.Windows.Forms.Label lblPlayerStr;
-    private System.Windows.Forms.Label lblPlayerDex;
-    private System.Windows.Forms.Label lblPlayerMana;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.Label label3;
-    private System.Windows.Forms.Label label4;
-    private System.Windows.Forms.Label lblPlayerName;
-    private System.Windows.Forms.Panel panel1;
-    private System.Windows.Forms.Panel panel2;
-    private System.Windows.Forms.Label lblEnemyName;
-    private System.Windows.Forms.Label lblEnemyHealth;
-    private System.Windows.Forms.Label label8;
-    private System.Windows.Forms.PictureBox picEnemy;
-    private System.Windows.Forms.Label label9;
-    private System.Windows.Forms.Label lblEnemyStr;
-    private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.Label lblEnemyDef;
-    private System.Windows.Forms.Label label13;
-    private System.Windows.Forms.Label lblEnemyMana;
-    private System.Windows.Forms.Label lblPlayerLevel;
-    private System.Windows.Forms.Label label6;
-    private System.Windows.Forms.Label lblEnemyLevel;
-    private System.Windows.Forms.Label label7;
+    protected System.Windows.Forms.Label lblPlayerHealth;
+    protected System.Windows.Forms.PictureBox picCharacter;
+    protected System.Windows.Forms.Label lblPlayerStr;
+    protected System.Windows.Forms.Label lblPlayerDex;
+    protected System.Windows.Forms.Label lblPlayerMana;
+    protected System.Windows.Forms.Label label1;
+    protected System.Windows.Forms.Label label2;
+    protected System.Windows.Forms.Label label3;
+    protected System.Windows.Forms.Label label4;
+    protected System.Windows.Forms.Label lblPlayerName;
+    protected System.Windows.Forms.Panel panel1;
+    protected System.Windows.Forms.Panel panel2;
+    protected System.Windows.Forms.Label lblEnemyName;
+    protected System.Windows.Forms.Label lblEnemyHealth;
+    protected System.Windows.Forms.Label label8;
+    protected System.Windows.Forms.PictureBox picEnemy;
+    protected System.Windows.Forms.Label label9;
+    protected System.Windows.Forms.Label lblEnemyStr;
+    protected System.Windows.Forms.Label label11;
+    protected System.Windows.Forms.Label lblEnemyDef;
+    protected System.Windows.Forms.Label label13;
+    protected System.Windows.Forms.Label lblEnemyMana;
+    protected System.Windows.Forms.Label lblPlayerLevel;
+    protected System.Windows.Forms.Label label6;
+    protected System.Windows.Forms.Label lblEnemyLevel;
+    protected System.Windows.Forms.Label label7;
     public System.Windows.Forms.Button btnSimpleAttack;
-    private System.Windows.Forms.Button btnWeakenAttack;
-    private System.Windows.Forms.Button btnRun;
-    private System.Windows.Forms.Label lblEndFightMessage;
-    private System.Windows.Forms.Label label5;
-    private System.Windows.Forms.Label lblPlayerXp;
-    private System.Windows.Forms.Label lblPlayerDamage;
-    private System.Windows.Forms.Label lblEnemyDamage;
-    private System.Windows.Forms.Timer tmrPlayerDamage;
-    private System.Windows.Forms.Timer tmrEnemyDamage;
-    private System.Windows.Forms.Label label16;
-    private System.Windows.Forms.Label label15;
-    private System.Windows.Forms.Label label14;
-    private System.Windows.Forms.Label label12;
-    private System.Windows.Forms.Label label10;
-    private System.Windows.Forms.Label lblPlayerInt;
-    private System.Windows.Forms.Label lblPlayerWis;
-    private System.Windows.Forms.Label lblPlayerChar;
-    private System.Windows.Forms.Label lblPlayerLuck;
-    private System.Windows.Forms.Label lblPlayerCon;
-    private System.Windows.Forms.Button Attack2;
+    protected System.Windows.Forms.Button btnWeakenAttack;
+    protected System.Windows.Forms.Button btnRun;
+    protected System.Windows.Forms.Label lblEndFightMessage;
+    protected System.Windows.Forms.Label label5;
+    protected System.Windows.Forms.Label lblPlayerXp;
+    protected System.Windows.Forms.Label lblPlayerDamage;
+    protected System.Windows.Forms.Label lblEnemyDamage;
+    protected System.Windows.Forms.Timer tmrPlayerDamage;
+    protected System.Windows.Forms.Timer tmrEnemyDamage;
+    protected System.Windows.Forms.Label label16;
+    protected System.Windows.Forms.Label label15;
+    protected System.Windows.Forms.Label label14;
+    protected System.Windows.Forms.Label label12;
+    protected System.Windows.Forms.Label label10;
+    protected System.Windows.Forms.Label lblPlayerInt;
+    protected System.Windows.Forms.Label lblPlayerWis;
+    protected System.Windows.Forms.Label lblPlayerChar;
+    protected System.Windows.Forms.Label lblPlayerLuck;
+    protected System.Windows.Forms.Label lblPlayerCon;
+    protected System.Windows.Forms.Button Attack2;
   
 
     }
