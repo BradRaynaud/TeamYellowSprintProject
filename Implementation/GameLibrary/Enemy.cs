@@ -5,7 +5,7 @@ using System.Drawing;
 namespace GameLibrary {
     public class Enemy : Mortal {
         private const float MAX_XP_DROP = 35;
-        private const float MIN_XP_DROP = 15;
+        private const float MIN_XP_DROP = 20;
         private const float WEAKEN_MIN = 1.25f;
         private const float WEAKEN_MAX = 1.85f;
 
@@ -19,7 +19,7 @@ namespace GameLibrary {
 
         private static readonly Random rand = new Random();
         private static readonly List<string> names = new List<string>() {
-            "Wily", "Bob", "Dr. Light", "WallCrusher", "Big Chungus"
+            "Wily", "Bob", "Dr. Light", "WallCrusher", "BigChungus"
         };
         private static readonly List<string> Titles = new List<string>() {
             "Mighty", "Hidden", "Sneaky", "Quick", "Mild", "Boring", "Tiny", "Huge", "Useless", "Exploding" 
