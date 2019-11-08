@@ -8,6 +8,7 @@ namespace GameLibrary {
     public class Map {
         private char[,] layout;
         private IDictionary<char, Tile> tileDict;
+        private Bitmap[] enemies;
         public GroupBox grpMap { get; private set; }
 
         static private Character character;
@@ -15,6 +16,7 @@ namespace GameLibrary {
         static private GroupBox grpBox;
         static private IDictionary<string, Map> mapDict = new Dictionary<string, Map>();
         static private Func<string, Bitmap> loadImg;
+        static public Random random = new Random();
 
         private const int TOP_PAD = 10;
         private const int BOUNDARY_PAD = 5;
@@ -55,6 +57,8 @@ namespace GameLibrary {
         public static Character InitializeMaps(string firstMapFolder, string characterImage, GroupBox grpBox, Func<string, Bitmap> LoadImg) {
             Map.grpBox = grpBox;
             loadImg = LoadImg;
+
+            mapDict.Clear();
 
             Map map = new Map();
             map.LoadMap(firstMapFolder);
@@ -105,6 +109,7 @@ namespace GameLibrary {
             char startCharacter = ' ';
             List<string> mapLines = new List<string>();
             List<string> mapTiles = new List<string>();
+            List<string> mapEnemies = new List<string>();
 
             // read from tiles file
             using (FileStream fs = new FileStream(mapFolder + @"\Tiles.txt", FileMode.Open))
@@ -206,11 +211,27 @@ namespace GameLibrary {
             // resize Group
             grpMap.Width = NumCols * BLOCK_SIZE + BOUNDARY_PAD * 2;
             grpMap.Height = NumRows * BLOCK_SIZE + TOP_PAD + BOUNDARY_PAD;
+
+            using (FileStream fs = new FileStream(mapFolder + @"\Enemies.txt", FileMode.Open)) {
+                using (StreamReader sr = new StreamReader(fs)) {
+                    string line = sr.ReadLine();
+                    while (line != null) {
+                        mapEnemies.Add(line);
+                        line = sr.ReadLine();
+                    }
+                }
+            }
+
+            enemies = new Bitmap[mapEnemies.Count];
+
+            for (int k = 0; k < mapEnemies.Count; ++k) {
+                enemies[k] = loadImg(mapEnemies[k]);
+            }
         }
 
         public Position? Enter(Position pos)
         {
-            if (Game.GetGame().State == GameState.FIGHTING || Game.GetGame().State == GameState.DEAD)
+            if (Game.GetGame().State != GameState.ON_MAP)
             {
                 return null;
             }
@@ -232,7 +253,8 @@ namespace GameLibrary {
             // otherwise see if the character should get a random encounter
             if (rand.NextDouble() < encounterChance) {
                 encounterChance = 0.0001;
-                Game.GetGame().SetEnemy(new Enemy(rand.Next(character.Level + 1), loadImg("enemy")));
+                
+                Game.GetGame().SetEnemy(new Enemy(rand.Next(character.Level + 1), enemies[random.Next(enemies.Length)]));
                 Game.GetGame().ChangeState(GameState.FIGHTING);
             }
             else {

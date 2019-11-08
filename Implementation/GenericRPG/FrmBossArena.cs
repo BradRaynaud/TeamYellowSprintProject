@@ -40,6 +40,14 @@ namespace GenericRPG {
                 frmGameOver.Show();
             }
             else {
+                if(!upgrade && enemy.Health < 0.5 * enemy.MaxHealth) {
+                    upgrade = true;
+                    picEnemy.BackgroundImage = Resources.fireBowser;
+                    for (int i = 0; i < 3; ++i) {
+                        enemy.LevelUp();
+                    }
+                }
+
                 float prevPlayerHealth = character.Health;
                 enemy.SimpleAttack(character);
                 float playerDamage = (float)Math.Round(prevPlayerHealth - character.Health);
@@ -61,15 +69,6 @@ namespace GenericRPG {
                     UpdateStats();
                 }
             }
-
-            if (!upgrade && enemy.Health < 0.5*enemy.MaxHealth) {
-                upgrade = true;
-                picEnemy.BackgroundImage = Resources.fireBowser;
-                for (int i = 0; i < 3; ++i) {
-                    enemy.LevelUp();
-                }
-            }
-
         }
     }
 }

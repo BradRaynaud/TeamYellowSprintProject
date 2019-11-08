@@ -181,9 +181,6 @@
   <data name="mariowall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mariowall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enemy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enemy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="netherportal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\netherportal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -228,5 +225,47 @@
   </data>
   <data name="fireBowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fireBowser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="darkrai" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\darkrai.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enderman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\enderman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\fox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="giratina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\giratina.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="goomba" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\goomba.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="isabelle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\isabelle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="luigi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\luigi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\mario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="skeleton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\skeleton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tomnook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\tomnook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="villager" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\villager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="witch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\witch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yoshi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\yoshi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoroark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enemies\zoroark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
