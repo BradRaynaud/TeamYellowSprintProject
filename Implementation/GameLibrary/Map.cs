@@ -330,7 +330,7 @@ namespace GameLibrary {
                 Game.GetGame().ChangeState(GameState.FIGHTING);
             }
             else {
-                encounterChance += 0.01;
+                encounterChance += 0.015;
             }
 
             // return the new position

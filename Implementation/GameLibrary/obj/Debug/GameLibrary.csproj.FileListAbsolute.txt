@@ -6,6 +6,5 @@ C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\bin\Deb
 C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\bin\Debug\GameLibrary.pdb
 C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.dll
 C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.pdb
-C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.csprojAssemblyReference.cache
 C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.Music.Music.resources
 C:\Users\Brad\Desktop\TeamYellowSprintProject\Implementation\GameLibrary\obj\Debug\GameLibrary.csproj.GenerateResource.cache

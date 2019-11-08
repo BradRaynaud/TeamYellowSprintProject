@@ -15,8 +15,8 @@ namespace GenericRPG {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmLevelUp_Load(object sender, EventArgs e) {
-            SoundPlayer sp = new SoundPlayer(@"Resources\levelup.wav");
-            sp.Play();
+            SoundPlayer spp = new SoundPlayer(@"Resources\levelup.wav");
+            spp.Play();
 
             Character character = Game.GetGame().Character;
             character.RefillHealthAndMana();
